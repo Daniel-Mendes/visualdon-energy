@@ -1,0 +1,14 @@
+body {
+    width: auto;
+    height: 100svh;
+
+    margin: 0;
+    padding: 0;
+}
+
+section {
+    height: 100svh;
+    overflow: hidden;
+
+    position: relative;
+}
