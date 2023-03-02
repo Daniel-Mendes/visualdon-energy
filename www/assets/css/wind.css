@@ -1,3 +1,7 @@
+section#wind {
+  cursor: url(../images/cursor/wind-solid.svg), auto;
+}
+
 .wave {
   background-repeat: no-repeat;
   background-size: cover;
@@ -97,7 +101,16 @@
   transform-origin: center 62.5%;
   transform-box: fill-box;
 
-  animation: turbine 7s linear infinite;
+  animation-duration: 7s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-name: turbine;
+  
+  transition: animation-duration 2s ease-in-out;
+}
+
+.wind-turbine.speed-up .turbine {
+  animation-duration: 3s;
 }
 
 @keyframes clouds {

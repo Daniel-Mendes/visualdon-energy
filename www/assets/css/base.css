@@ -1,3 +1,10 @@
+html,
+body {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+}
+
 body {
     width: auto;
     height: 100svh;
@@ -6,10 +13,16 @@ body {
     padding: 0;
 }
 
+body::-webkit-scrollbar {
+    display: none;
+}
+
 section {
-    height: 100svh;
+    height: 100vh;
 
     position: relative;
+
+    scroll-snap-align: start;
 }
 
 section .section-bg {
