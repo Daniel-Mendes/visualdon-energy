@@ -1,5 +1,5 @@
-section#oil {
-    cursor: url(../images/cursor/gas-pump-solid.svg), auto;
+#oil .interactive:hover {
+    cursor: url(../images/cursor/x-ray-solid.svg), auto;
 }
 
 #underground {
@@ -16,36 +16,11 @@ section#oil {
     height: 400px;
 }
 
-#oil-blob {
-    background-image: url(../images/oil/blob-oil.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: top;
-
-    position: absolute;
-    left: 50%;
-    bottom: 10px;
-
-    transform: translateX(-50%);
-    z-index: 2;
-    
-    width: 300px;
-    height: 300px;
-}
-
 #oil-pipe {
-
-    width: 20px;
-    max-height: 250px;
-
-    z-index: 10;
+    z-index: 2;
 }
 
 #oil-pipe circle {
-    position: absolute;
-    max-height: 250px;
-    bottom: 20px;
-
     animation-duration: 3s;
     animation-timing-function: ease;
     animation-iteration-count: infinite;
@@ -69,21 +44,12 @@ section#oil {
 
 #pumping-oil {
     position: absolute;
-    bottom: 314px;
-    left: 76.5%;
+    bottom: 215px;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
 
     z-index: 2;
-
-    width: 400px;
-    height: 200px;
-
-    scale: 5;
-}
-
-#pumping-oil #arm {
-    position: absolute;
-    bottom: 20;
-    left: 0;
 }
 
 #pumping-oil #baseline {
@@ -140,29 +106,10 @@ section#oil {
 }
 
 #pumping-oil #weight-half-circle {
-    contain: content;
-
     transform-origin: center 62.5%;
-    transform: scale(0.15) rotate(90deg) translate(-200px, 330px);
-
-    animation-duration: 7s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-name: pumping-oil-weight-half-circle;
+    transform: scale(0.15) rotate(90deg) translate(-480px, -140px);
 }
 
 #pumping-oil.speed-up #weight-half-circle {
     animation-duration: 3s;
-}
-
-@keyframes pumping-oil-weight-half-circle {
-    0% {
-        transform: scale(0.15) rotate(90deg) translate(-200px, 330px);
-    }
-    50% {
-        transform: scale(0.15) rotate(76deg) translate(-350px, 330px);
-    }
-    100% {
-        transform: scale(0.15) rotate(90deg) translate(-200px, 330px);
-    }
 }

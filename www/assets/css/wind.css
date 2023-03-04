@@ -1,4 +1,4 @@
-section#wind {
+#wind .interactive:hover {
   cursor: url(../images/cursor/wind-solid.svg), auto;
 }
 
@@ -27,51 +27,6 @@ section#wind {
   bottom: 0;
 
   height: 350px;
-}
-
-.cloud {
-  --scale: 2;
-
-  background-image: url(../images/wind/cloud.svg);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-
-  position: absolute;
-  top: 80px;
-  left: 120px;
-
-  transform: scale(2);
-  animation: 4s clouds ease infinite;
-
-  height: 100px;
-  width: 100px;
-}
-
-.cloud:first-child {
-  z-index: 1;
-}
-
-.cloud:nth-child(2) {
-  --scale: 1.5;
-
-  left: 200px;
-  bottom: 120px;
-
-  animation: 4.3s clouds ease infinite;
-
-  filter: invert(1%) sepia(1%) saturate(477%) hue-rotate(158deg) brightness(99%)
-    contrast(91%);
-}
-
-.cloud:nth-child(3) {
-  --scale: 1;
-
-  left: auto;
-  right: 150px;
-  bottom: 300px;
-
-  animation: 5s clouds ease infinite;
 }
 
 .wind-turbine {
@@ -111,18 +66,6 @@ section#wind {
 
 .wind-turbine.speed-up .turbine {
   animation-duration: 3s;
-}
-
-@keyframes clouds {
-  0% {
-    transform: translateY(0px) scale(var(--scale));
-  }
-  50% {
-    transform: translateY(8px) scale(var(--scale));
-  }
-  100% {
-    transform: translateY(0px) scale(var(--scale));
-  }
 }
 
 @keyframes turbine {
