@@ -29,6 +29,7 @@ section {
   height: 100vh;
 
   scroll-snap-align: start;
+  scroll-snap-stop: always;
 
   h2 {
     color: white;
