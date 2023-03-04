@@ -1,15 +1,26 @@
 import gsap from "gsap";
 
 const wrapper = document.querySelector("#wrapper");
-const sections = document.querySelectorAll("section");
+const sections = document.querySelectorAll("#wrapper section");
+const bullets = document.querySelectorAll(".bullet");
+
+const clouds = document.querySelectorAll('.cloud');
 
 let currentSection = 0;
 let oldSection = 0;
 let offsets = [];
 let innerWidth = window.innerWidth;
 
+const dotAnimation = () => {
+  let sectionNumber = currentSection;
+  bullets.forEach((bullet) => bullet.classList.remove("active"));
+  let currentBullet = document.querySelector(".section-" + sectionNumber);
+  currentBullet.classList.add("active");
+}
+
 const sectionAnimation = (event) => {
   event.preventDefault();
+
   let target;
   oldSection = currentSection;
 
@@ -34,10 +45,21 @@ const sectionAnimation = (event) => {
     return;
   }
 
+  if (sections[currentSection].id === 'hydraulic') {
+    clouds.forEach((cloud) => {
+      cloud.classList.add('interactive');
+    });
+  } else {
+    clouds.forEach((cloud) => {
+      cloud.classList.remove('interactive');
+    });
+  }
+
   gsap.to(wrapper, {
     duration: 1.5,
     ease: "expo.out",
     x: offsets[currentSection],
+    onStart: dotAnimation
   });
 };
 
@@ -53,5 +75,10 @@ const sizeIt = () => {
 };
 
 sizeIt();
+
+bullets.forEach((bullet) => {
+  bullet.addEventListener("click", sectionAnimation);
+});
+
 wrapper.addEventListener("wheel", sectionAnimation);
 window.addEventListener("resize", sizeIt);

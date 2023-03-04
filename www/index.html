@@ -21,11 +21,11 @@
   </section>
 
   <div id="wrapper">
-    <section id="hydraulic">
-    </section>
-    
     <section id="oil">
+      <h2>Oil</h2>
+
       <div id="underground"></div>
+
       <div id="pumping-oil" class="interactive">
         <svg width="150" height="200" transform="scale(5)">
           <g id="oil-pipe">
@@ -41,13 +41,12 @@
               L 0 100
               Z" fill="#110D0C" id="weight-half-circle" />
           </g>
+
           <g id="weight">
             <rect x="15" y="80.8" width="15" height="22" fill="#110D0C" />
             <line x1="23" y1="54" x2="23" y2="90" stroke="#110D0C" stroke-width="5" />
           </g>
-          <g>
 
-          </g>
           <g>
             <circle cx="60" cy="56" r="7" fill="#110D0C" />
             <circle cx="60" cy="56" r="3" fill="white" />
@@ -65,7 +64,17 @@
       </div>
     </section>
 
+    <section id="hydraulic">
+      <h2>Hydraulic</h2>
+
+      <div id="layered-peaks">
+        <img src="assets/images/hydraulic/layered-peaks.svg" alt="Mountain Snow Peaks" />
+      </div>
+    </section>
+
     <section id="solar">
+      <h2>Solar</h2>
+
       <div>
         <div id="wave-left" class="wave"></div>
         <div id="wave-right" class="wave"></div>
@@ -126,6 +135,8 @@
     </section>
 
     <section id="wind">
+      <h2>Wind</h2>
+
       <div>
         <div class="wind-turbine interactive">
           <svg viewbox="0 0 100 100">
@@ -162,11 +173,15 @@
         <div id="wave-right" class="wave"></div>
       </div>
     </section>
+  </div>
 
-   
-
-    <section></section>
-    <section></section>
+  <div class="nav-container">
+    <ul class="nav">
+      <li class="bullet section-0 active" data-target="0"><span class="dot"></span></li>
+      <li class="bullet section-1" data-target="1"><span class="dot"></span></li>
+      <li class="bullet section-2" data-target="2"><span class="dot"></span></li>
+      <li class="bullet section-3" data-target="3"><span class="dot"></span></li>
+    </ul>
   </div>
 </body>
 

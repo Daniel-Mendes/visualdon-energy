@@ -1,4 +1,4 @@
 import '../scss/style.scss';
 
-import './interactive';
-import './scroll';
+import './interactive.js';
+import './scroll.js';
