@@ -1,6 +1,4 @@
-const interactiveElements = document.querySelectorAll(
-  ".wind-turbine, #pumping-oil"
-);
+const interactiveElements = document.querySelectorAll(".interactive");
 
 for (let element of interactiveElements) {
   element.addEventListener("click", () => {
