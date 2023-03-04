@@ -81,4 +81,5 @@ bullets.forEach((bullet) => {
 });
 
 wrapper.addEventListener("wheel", sectionAnimation);
+wrapper.addEventListener("touchmove", sectionAnimation);
 window.addEventListener("resize", sizeIt);
