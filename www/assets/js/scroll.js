@@ -11,6 +11,8 @@ let oldSection = 0;
 let offsets = [];
 let innerWidth = window.innerWidth;
 
+let lastTouchX;
+
 const dotAnimation = () => {
   let sectionNumber = currentSection;
   bullets.forEach((bullet) => bullet.classList.remove("active"));
@@ -81,5 +83,18 @@ bullets.forEach((bullet) => {
 });
 
 wrapper.addEventListener("wheel", sectionAnimation);
+wrapper.addEventListener("touchstart", (event) => {
+  lastTouchX = event.touches[0].clientX;
+});
+wrapper.addEventListener("touchend", (event) => {
+  let touchX = event.changedTouches[0].clientX;
 
+  if (lastTouchX > touchX + 50) {
+    currentSection = currentSection < sections.length - 1 ? currentSection + 1 : currentSection;
+  } else if (lastTouchX < touchX - 50) {
+    currentSection = currentSection > 0 ? currentSection - 1 : currentSection;
+  }
+
+  dotAnimation();
+});
 window.addEventListener("resize", sizeIt);

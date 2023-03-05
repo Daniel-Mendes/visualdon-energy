@@ -72,3 +72,15 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  #background {
+    .cloud {
+      top: 30px;
+
+      &:nth-child(3) {
+        display: none;
+      }
+    }
+  }
+}

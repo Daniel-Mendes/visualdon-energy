@@ -83,7 +83,6 @@
     &#solar-panel-batch-2 {
       --deg: 8deg;
 
-
       bottom: 194px;
       right: 30%;
       
@@ -106,6 +105,23 @@
       100% {
         transform: rotateZ(var(--deg));
       }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #solar {
+    #solar-panel-batch-1 {
+      --deg: 0deg;
+
+      bottom: 120px;
+      left: 20%;
+  
+      transform: rotateZ(var(--deg));
+    }
+
+    #solar-panel-batch-2 {
+      display: none;
     }
   }
 }

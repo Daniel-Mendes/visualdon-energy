@@ -59,6 +59,10 @@
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-name: turbine;
+
+    &#turbine-1 {
+      animation-delay: 3s;
+    }
   }
 
   .wind-turbine.speed-up .turbine {
@@ -68,6 +72,26 @@
   @keyframes turbine {
     to {
       transform: rotate(1turn);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #wind {
+    .wind-turbine {
+      &:first-child {
+        bottom: 170px;
+        left: 320px;
+
+        transform: translate(-50%);
+      }
+    
+      &:nth-child(2) {
+        right: 60px;
+        bottom: 160px;
+    
+        transform: translate(-50%) scale(1.8);
+      }
     }
   }
 }
