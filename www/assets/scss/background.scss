@@ -76,7 +76,15 @@
 @media (max-width: 768px) {
   #background {
     .cloud {
-      top: 30px;
+      --scale: 1.2;
+
+      top: 20px;
+
+      &:first-child {
+        --scale: 0.8;
+
+        left: 180px;
+      }
 
       &:nth-child(3) {
         display: none;
