@@ -82,7 +82,7 @@ bullets.forEach((bullet) => {
   bullet.addEventListener("click", sectionAnimation);
 });
 
-wrapper.addEventListener("wheel", sectionAnimation);
+// wrapper.addEventListener("wheel", sectionAnimation);
 wrapper.addEventListener("touchstart", (event) => {
   lastTouchX = event.touches[0].clientX;
 });
