@@ -1,6 +1,6 @@
 # visualdon-energy
 
-L'hisoire des énérgies - https://visualdon-energy.netlify.app/
+L'histoire des énérgies - https://visualdon-energy.netlify.app/
 
 ## Contexte
 
