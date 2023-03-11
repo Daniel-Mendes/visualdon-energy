@@ -19,7 +19,6 @@
 
   #wave-left {
     background-image: url(../images/waves/wave-3.svg);
-    filter: brightness(0) saturate(100%) invert(37%) sepia(85%) saturate(2986%) hue-rotate(125deg) brightness(87%) contrast(101%);
   
     height: 400px;
 
@@ -28,7 +27,6 @@
   
   #wave-right {
     background-image: url(../images/waves/wave-1.svg);
-    filter: brightness(0) saturate(100%) invert(100%) sepia(37%) saturate(4260%) hue-rotate(17deg) brightness(93%) contrast(69%);
   
     height: 350px;
   }
@@ -94,18 +92,22 @@
 
       animation: 0.2s shake ease-in-out infinite;
     }
+  }
 
-    @keyframes shake {
-      0% {
-        transform: rotateZ(var(--deg));
-      }
-      50% {
-        transform: rotateZ(calc(var(--deg) + 2deg));
-      }
-      100% {
-        transform: rotateZ(var(--deg));
-      }
-    }
+  .section-body {
+    background-color: rgba(var(--color-solar), var(--section-body-opacity));
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: rotateZ(var(--deg));
+  }
+  50% {
+    transform: rotateZ(calc(var(--deg) + 2deg));
+  }
+  100% {
+    transform: rotateZ(var(--deg));
   }
 }
 

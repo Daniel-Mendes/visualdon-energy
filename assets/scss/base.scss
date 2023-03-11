@@ -51,8 +51,6 @@ section {
     }
 
     .section-body {
-      background-color: #fff;
-
       padding: 4rem 3rem;
 
       h2 {
@@ -63,7 +61,7 @@ section {
       }
 
       img {
-        width: 100%;
+        max-width: 100%;
         height: auto;
       }
     }

@@ -13,7 +13,7 @@
         bottom: 0;
         
         width: 100vw;
-        height: 40vh;
+        height: 400px;
     }
 
     #pumping-oil {
@@ -62,6 +62,10 @@
             transform: scale(0.15) rotate(90deg) translate(-480px, -140px);
         }
     }
+
+    .section-body {
+        background-color: rgba(var(--color-oil), var(--section-body-opacity));
+    }
 }
 
 @keyframes oil {
@@ -100,7 +104,7 @@
 @media (max-width: 768px) {
     #oil {
         #underground {
-            height: 440px;
+            height: 439px;
         }
 
         #pumping-oil {

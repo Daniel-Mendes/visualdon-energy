@@ -9,11 +9,15 @@
 
         img {
             width: 100%;
-            height: 555px;
+            height: 890px;
 
             object-fit: cover;
             object-position: top left;
         }
+    }
+
+    .section-body {
+        background-color: rgba(var(--color-hydraulic), var(--section-body-opacity));
     }
 }
 

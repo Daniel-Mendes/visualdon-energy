@@ -2,10 +2,12 @@
     --font-size: 16px;
     --font-family: 'Poppins', sans-serif;
 
-    --color-hydaulic: #f00;
-    --color-oil: #0f0;
-    --color-solar: #00f;
-    --color-wind: #ff0;
+    --color-oil: 95, 36, 27;
+    --color-hydraulic: 47, 98, 124;
+    --color-solar: 227, 176, 48;
+    --color-wind: 0, 148, 53;
+
+    --section-body-opacity: 0.1;
 }
 
 @media (max-width: 768px) {
