@@ -10,7 +10,7 @@ body {
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
 
-  cursor: url(../images/cursor/magnifying-glass-solid.svg), auto;
+  cursor: url(../images/cursor/arrow-pointer-solid.svg), auto;
 }
 
 body {
@@ -52,6 +52,8 @@ section {
       inset: 0;
 
       height: 100dvh;
+
+      cursor: url(../images/cursor/magnifying-glass-solid.svg), auto;
     }
 
     .section-body {
