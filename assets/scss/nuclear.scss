@@ -1,0 +1,44 @@
+#nuclear {
+    .interactive:hover {
+        cursor: url(../images/cursor/radiation-solid.svg), auto;
+    }
+
+    .section-body {
+        background-color: rgba(var(--color-nuclear), var(--section-body-opacity));
+    }
+
+    #ground {
+        position: absolute;
+        bottom: 0;
+
+        width: 100%;
+        height: 150px;
+
+        background-color: rgb(var(--color-nuclear));
+    }
+
+    #smoke {
+        height: 100%;
+
+        #bubbleGroup {
+            transform: translate(600px, -340px);
+
+            .st5 {
+                fill:#946EB5;
+            }
+	        .st6 {
+                fill:#BF7AB3;
+            }
+        }
+    }
+
+    #nuclear-reactor {
+        position: absolute;
+        bottom: 150px;
+
+        left: 50%;
+        transform: translate(-50%);
+
+        width: 60%;
+    }
+}
