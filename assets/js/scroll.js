@@ -2,7 +2,6 @@ import gsap from "gsap";
 
 const wrapper = document.querySelector("#wrapper");
 const sections = document.querySelectorAll("#wrapper section");
-const bullets = document.querySelectorAll(".bullet");
 
 const clouds = document.querySelectorAll('.cloud');
 
@@ -13,37 +12,12 @@ let innerWidth = window.innerWidth;
 
 let lastTouchX;
 
-const dotAnimation = () => {
-  let sectionNumber = currentSection;
-  bullets.forEach((bullet) => bullet.classList.remove("active"));
-  let currentBullet = document.querySelector(".section-" + sectionNumber);
-  currentBullet.classList.add("active");
-}
-
 const sectionAnimation = (event) => {
   event.preventDefault();
 
-  let target;
   oldSection = currentSection;
 
-  if (event.type == "click") {
-    target = event.target.dataset.target;
-    currentSection = parseInt(target);
-  } else {
-    if (gsap.isTweening(wrapper)) {
-      return;
-    }
-
-    currentSection =
-      event.deltaY > 0 ? (currentSection += 1) : (currentSection -= 1);
-    currentSection = currentSection < 0 ? 0 : currentSection;
-    currentSection =
-      currentSection > sections.length - 1
-        ? sections.length - 1
-        : currentSection;
-  }
-
-  if (oldSection === currentSection) {
+  if (gsap.isTweening(wrapper)) {
     return;
   }
 
@@ -60,8 +34,7 @@ const sectionAnimation = (event) => {
   gsap.to(wrapper, {
     duration: 1.5,
     ease: "expo.out",
-    x: offsets[currentSection],
-    onStart: dotAnimation
+    x: offsets[currentSection]
   });
 };
 
@@ -78,15 +51,15 @@ const sizeIt = () => {
 
 sizeIt();
 
-bullets.forEach((bullet) => {
-  bullet.addEventListener("click", sectionAnimation);
-});
-
 wrapper.addEventListener("touchstart", (event) => {
+  event.preventDefault();
+
   lastTouchX = event.touches[0].clientX;
 });
 
 wrapper.addEventListener("touchend", (event) => {
+  event.preventDefault();
+
   let touchX = event.changedTouches[0].clientX;
 
   if (lastTouchX > touchX + 50) {
@@ -95,7 +68,45 @@ wrapper.addEventListener("touchend", (event) => {
     currentSection = currentSection > 0 ? currentSection - 1 : currentSection;
   }
 
-  dotAnimation();
+  sectionAnimation(event);
+});
+
+window.addEventListener("keydown", (event) => {
+  if (event.key === "ArrowRight") {
+    event.preventDefault();
+
+    currentSection = currentSection < sections.length - 1 ? currentSection + 1 : currentSection;
+    sectionAnimation(event);
+  } else if (event.key === "ArrowLeft") {
+    event.preventDefault();
+    
+    currentSection = currentSection > 0 ? currentSection - 1 : currentSection;
+    sectionAnimation(event);
+  }
+});
+
+window.addEventListener("click", (event) => {
+  if (event.clientX < 50) {
+    event.preventDefault();
+
+    currentSection = currentSection > 0 ? currentSection - 1 : currentSection;
+    sectionAnimation(event);
+  } else if (event.clientX > innerWidth - 100) {
+    event.preventDefault();
+    
+    currentSection = currentSection < sections.length - 1 ? currentSection + 1 : currentSection;
+    sectionAnimation(event);
+  }
 });
 
 window.addEventListener("resize", sizeIt);
+
+window.addEventListener("mousemove", (event) => {
+  if (event.clientX < 50 && currentSection > 0) {
+    document.body.style.cursor = getComputedStyle(document.documentElement).getPropertyValue('--cursor-hand-left');
+  } else if (event.clientX > innerWidth - 100 && currentSection < sections.length - 1) {
+    document.body.style.cursor = getComputedStyle(document.documentElement).getPropertyValue('--cursor-hand-right');
+  } else {
+    document.body.style.cursor = getComputedStyle(document.documentElement).getPropertyValue('--cursor-default');
+  }
+});
