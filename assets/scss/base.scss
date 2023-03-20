@@ -52,12 +52,12 @@ section {
       inset: 0;
 
       height: 100dvh;
+
+      touch-action: pan-y;
     }
 
     .section-body {
       padding: 4rem 3rem;
-
-      cursor: url("../images/cursor/arrow-pointer-solid.svg"), auto;
 
       h2 {
         font-size: 4rem;

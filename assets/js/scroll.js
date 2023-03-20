@@ -52,14 +52,10 @@ const sizeIt = () => {
 sizeIt();
 
 wrapper.addEventListener("touchstart", (event) => {
-  event.preventDefault();
-
   lastTouchX = event.touches[0].clientX;
 });
 
 wrapper.addEventListener("touchend", (event) => {
-  event.preventDefault();
-
   let touchX = event.changedTouches[0].clientX;
 
   if (lastTouchX > touchX + 50) {
@@ -101,11 +97,13 @@ window.addEventListener("click", (event) => {
 
 window.addEventListener("resize", sizeIt);
 
-window.addEventListener("mousemove", (event) => {
+document.body.addEventListener("mousemove", (event) => {
   if (event.clientX < 50 && currentSection > 0) {
     document.body.style.cursor = getComputedStyle(document.documentElement).getPropertyValue('--cursor-hand-left');
   } else if (event.clientX > innerWidth - 100 && currentSection < sections.length - 1) {
     document.body.style.cursor = getComputedStyle(document.documentElement).getPropertyValue('--cursor-hand-right');
+  } else if (event.pageY < innerHeight) {
+    document.body.style.cursor = getComputedStyle(document.documentElement).getPropertyValue('--cursor-magnifying-glass');
   } else {
     document.body.style.cursor = getComputedStyle(document.documentElement).getPropertyValue('--cursor-default');
   }

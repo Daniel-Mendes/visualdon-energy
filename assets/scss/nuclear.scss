@@ -42,3 +42,17 @@
         width: 60%;
     }
 }
+
+@media (max-width: 768px) {
+    #nuclear {
+        #ground {
+            height: 227px;
+        }
+
+        #nuclear-reactor {
+            bottom: 227px;
+
+            width: 90%;
+        }
+    }
+}
