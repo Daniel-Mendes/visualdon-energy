@@ -16,6 +16,35 @@
         }
     }
 
+    #raining-container {
+        width: 100%;
+        height: 100%;
+
+        position: inherit;
+        overflow: hidden;
+
+        svg {
+            width: inherit;
+            height: inherit;
+
+            transform: translate(105px, 170px);
+            scale: 1.05;
+
+            use {
+                width: inherit;
+                height: inherit;
+            }
+
+            #rain1, #rain2, #rain3, #rain4 {
+                fill: #BBE8F2;
+            }
+
+            #rain3, #rain4 {
+                transform: translate(840px);
+            }
+        }
+    }
+
     .section-body {
         background-color: rgba(var(--color-hydraulic), var(--section-body-opacity));
     }
