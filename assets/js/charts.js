@@ -11,6 +11,8 @@ d3.json("assets/data/owid-energy-switzerland-data.json")
     const dataPerYear = [];
 
     data["Switzerland"].data.forEach(d => {
+        if (d.year < 1960) return;
+
         dataPerYear.push({
             year: d3.timeParse("%Y") (d.year),
             oil_consumption: d.oil_consumption || 0
@@ -44,7 +46,7 @@ d3.json("assets/data/owid-energy-switzerland-data.json")
 
     const transitionPath = d3
         .transition()
-        .duration(2500);
+        .duration(3000);
 
     const path = svg.append('path')
         .datum(data)
