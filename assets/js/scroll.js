@@ -92,6 +92,10 @@ window.addEventListener("click", (event) => {
     
     currentSection = currentSection < sections.length - 1 ? currentSection + 1 : currentSection;
     sectionAnimation(event);
+  } else if (event.pageY > innerHeight - 100 && event.pageY < innerHeight) {
+    window.scrollTo({
+      top: innerHeight
+    });
   }
 });
 
@@ -102,6 +106,8 @@ document.body.addEventListener("mousemove", (event) => {
     document.body.style.cursor = getComputedStyle(document.documentElement).getPropertyValue('--cursor-hand-left');
   } else if (event.clientX > innerWidth - 100 && currentSection < sections.length - 1) {
     document.body.style.cursor = getComputedStyle(document.documentElement).getPropertyValue('--cursor-hand-right');
+  } else if (event.pageY > innerHeight - 100 && event.pageY < innerHeight) {
+    document.body.style.cursor = getComputedStyle(document.documentElement).getPropertyValue('--cursor-hand-down');
   } else if (event.pageY < innerHeight) {
     document.body.style.cursor = getComputedStyle(document.documentElement).getPropertyValue('--cursor-magnifying-glass');
   } else {
