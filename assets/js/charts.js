@@ -21,7 +21,7 @@ d3.json("assets/data/owid-energy-switzerland-data.json")
 
     return dataPerYear;
 }).then(data => {
-    const margin = { top: 20, right: 20, bottom: 20, left: 20 },
+    const margin = { top: 40, right: 40, bottom: 40, left: 80 },
         width = 960 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
 
@@ -72,5 +72,18 @@ d3.json("assets/data/owid-energy-switzerland-data.json")
 
     svg.append('g')
         .call(d3.axisLeft(y));
+
+    svg.append('text')
+        .attr('x', width / 2)
+        .attr('y', height + margin.bottom)
+        .attr('text-anchor', 'middle')
+        .text('Year');
+
+    svg.append('text')
+        .attr('x', -height / 2)
+        .attr('y', -margin.left / 2)
+        .attr('text-anchor', 'middle')
+        .attr('transform', 'rotate(-90)')
+        .text('Oil consumption (TJ)');
 });
 
