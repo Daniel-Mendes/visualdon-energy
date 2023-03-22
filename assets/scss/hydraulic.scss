@@ -23,15 +23,12 @@
         position: inherit;
         overflow: hidden;
 
+        visibility: hidden;
+
         svg {
-            width: inherit;
             height: inherit;
 
-            transform: translate(105px, 170px);
-            scale: 1.05;
-
             use {
-                width: inherit;
                 height: inherit;
             }
 
@@ -39,8 +36,18 @@
                 fill: #BBE8F2;
             }
 
-            #rain3, #rain4 {
-                transform: translate(840px);
+            &.raining-left {
+                width: 240px;
+
+                transform: translate(90px, 170px);
+            }
+
+            &.raining-right {
+                width: 100px;
+
+                transform: translate(1430px, 150px);
+
+                display: initial;
             }
         }
     }
@@ -57,6 +64,20 @@
                 height: 480px;
 
                 object-position: top right;
+            }
+        }
+
+        #raining-container {
+            svg {
+                &.raining-left {
+                    width: 140px;
+
+                    transform: translate(120px, 80px);
+                }
+
+                &.raining-right {
+                    display: none;
+                }
             }
         }
     }

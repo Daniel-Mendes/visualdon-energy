@@ -2,8 +2,6 @@
   width: 100vw;
   height: 100dvh;
 
-  cursor: url(../images/cursor/magnifying-glass-solid.svg), auto;
-
   .section-bg {
     width: 100%;
     height: 100%;
@@ -33,7 +31,7 @@
     height: 100px;
     width: 100px;
 
-    &:first-child {
+    &.cloud-left:first-child {
       --scale: 1.5;
     
       left: 200px;
@@ -44,7 +42,7 @@
       filter: invert(1%) sepia(1%) saturate(477%) hue-rotate(158deg) brightness(99%) contrast(91%);
     }
     
-    &:nth-child(3) {
+    &.cloud-right {
       --scale: 1;
     
       left: auto;
@@ -55,7 +53,6 @@
     }
 
     &.interactive:hover {
-      background-color: red;
       cursor: url(../images/cursor/cloud-rain-solid.svg), auto;
     }
 
@@ -80,13 +77,13 @@
 
       top: 20px;
 
-      &:first-child {
+      &.cloud-left:first-child {
         --scale: 0.8;
 
         left: 180px;
       }
 
-      &:nth-child(3) {
+      &.cloud-right {
         display: none;
       }
     }

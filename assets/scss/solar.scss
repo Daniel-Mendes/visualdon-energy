@@ -113,17 +113,23 @@
 
 @media (max-width: 768px) {
   #solar {
-    #solar-panel-batch-1 {
-      --deg: 0deg;
-
-      bottom: 120px;
-      left: 20%;
+    .solar-panel-batch {
+      &#solar-panel-batch-1 {
+        --deg: 8deg;
   
-      transform: rotateZ(var(--deg));
-    }
+        left: 30px;
+        bottom: 150px;
 
-    #solar-panel-batch-2 {
-      display: none;
+        scale: 0.9;
+      }
+  
+      &#solar-panel-batch-2 {
+        --deg: -14deg;
+
+        bottom: 108px;
+        right: 40px;
+      }
     }
+   
   }
 }
