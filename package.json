@@ -1,7 +1,7 @@
 {
   "name": "visualdon-energy",
   "version": "1.0.0",
-  "description": "",
+  "description": "Storytelling of the energy history of Switzerland.",
   "main": "assets/js/index.js",
   "scripts": {
     "dev": "vite",
@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/Daniel-Mendes/visualdon-energy.git"
   },
-  "author": "",
+  "author": "Daniel-Mendes",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Daniel-Mendes/visualdon-energy/issues"
@@ -20,11 +20,12 @@
   "homepage": "https://github.com/Daniel-Mendes/visualdon-energy#readme",
   "dependencies": {
     "d3": "^7.8.2",
-    "gsap": "^3.11.4",
-    "netlify-cli": "^13.0.1"
+    "gsap": "^3.11.5",
+    "netlify-cli": "^13.2.1"
   },
   "devDependencies": {
-    "sass": "^1.58.3",
-    "vite": "^4.1.4"
+    "sass": "^1.59.3",
+    "vite": "^4.2.1",
+    "vite-plugin-static-copy": "^0.13.1"
   }
 }
