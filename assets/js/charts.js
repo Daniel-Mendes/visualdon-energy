@@ -67,11 +67,30 @@ d3.json("assets/data/owid-energy-switzerland-data.json")
         .attr("stroke-dashoffset", 0);
         
     svg.append('g')
+        .attr('class', 'axis-lines')
         .attr('transform', `translate(0, ${height})`)
         .call(d3.axisBottom(x));
 
     svg.append('g')
+        .attr('class', 'axis-lines')
         .call(d3.axisLeft(y));
+
+    const xGrid = d3.axisBottom(x)
+        .tickSize(-height, 0, 0)
+        .tickFormat('');
+
+    const yGrid = d3.axisLeft(y)
+        .tickSize(-width, 0, 0)
+        .tickFormat('');
+
+    svg.append('g')
+        .attr('class', 'grid-lines')
+        .attr('transform', `translate(0, ${height})`)
+        .call(xGrid);
+
+    svg.append('g')
+        .attr('class', 'grid-lines')
+        .call(yGrid);
 
     svg.append('text')
         .attr('x', width / 2)

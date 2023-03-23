@@ -1,0 +1,11 @@
+.chart {
+    .grid-lines line {
+        stroke-opacity: 0.2;
+    }
+}
+
+#oil-chart {
+    .grid-lines line {
+        stroke: rgb(var(--color-oil));
+    }
+}

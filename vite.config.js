@@ -6,7 +6,7 @@ export default {
       targets: [
         {
           src: 'assets/data/owid-energy-switzerland-data.json',
-          dest: 'assets/'
+          dest: 'assets/data/'
         }
       ]
     })
