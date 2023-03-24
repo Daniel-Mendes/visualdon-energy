@@ -39,15 +39,15 @@
             &.raining-left {
                 width: 240px;
 
-                transform: translate(90px, 170px);
+                transform: translate(85px, 170px);
             }
 
             &.raining-right {
-                width: 100px;
-
-                transform: translate(1430px, 150px);
-
                 display: initial;
+                width: 100px;
+                float: right;
+
+                transform: translate(-145px, 150px);
             }
         }
     }
