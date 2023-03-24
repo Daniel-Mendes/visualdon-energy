@@ -9,3 +9,39 @@
         stroke: rgb(var(--color-oil));
     }
 }
+
+#gas-chart {
+    .grid-lines line {
+        stroke: rgb(var(--color-gas));
+    }
+}
+
+#coal-chart {
+    .grid-lines line {
+        stroke: rgb(var(--color-coal));
+    }
+}
+
+#nuclear-chart {
+    .grid-lines line {
+        stroke: rgb(var(--color-nuclear));
+    }
+}
+
+#hydro-chart {
+    .grid-lines line {
+        stroke: rgb(var(--color-hydraulic));
+    }
+}
+
+#solar-chart {
+    .grid-lines line {
+        stroke: rgb(var(--color-solar));
+    }
+}
+
+#wind-chart {
+    .grid-lines line {
+        stroke: rgb(var(--color-wind));
+    }
+}

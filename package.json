@@ -2,7 +2,6 @@
   "name": "visualdon-energy",
   "version": "1.0.0",
   "description": "Storytelling of the energy history of Switzerland.",
-  "main": "index.html",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
