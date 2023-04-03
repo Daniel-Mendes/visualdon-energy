@@ -65,6 +65,18 @@
 
     .section-body {
         background-color: rgba(var(--color-oil), var(--section-body-opacity));
+
+        .oil-not-equal {
+            margin: 6rem auto;
+            font-size: 1.8rem;
+
+            span {
+                img {
+                    width: 4rem;
+                    filter: invert(12%) sepia(27%) saturate(4803%) hue-rotate(345deg) brightness(93%) contrast(88%) opacity(0.6);
+                }
+            }
+        }
     }
 }
 

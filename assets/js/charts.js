@@ -1,10 +1,5 @@
 import * as d3 from 'd3';
-
-const oilColor = `rgb(${getComputedStyle(document.documentElement).getPropertyValue('--color-oil')})`;
-const hydraulicColor = `rgb(${getComputedStyle(document.documentElement).getPropertyValue('--color-hydraulic')})`;
-const nuclearColor = `rgb(${getComputedStyle(document.documentElement).getPropertyValue('--color-nuclear')})`;
-const solarColor = `rgb(${getComputedStyle(document.documentElement).getPropertyValue('--color-solar')})`;
-const windColor = `rgb(${getComputedStyle(document.documentElement).getPropertyValue('--color-wind')})`;
+import { nuclearColor, oilColor } from './colors';
 
 d3.json("assets/data/owid-energy-switzerland-data.json")
 .then(data => {
@@ -37,17 +32,26 @@ d3.json("assets/data/owid-energy-switzerland-data.json")
     nuclearChart(data.nuclearChart);
     solarChart(data.solarChart);
     windChart(data.windChart);
+
+    window.addEventListener('resize', () => {
+        oilChart(data.oilChart);
+        hydraulicChart(data.hydraulicChart);
+        nuclearChart(data.nuclearChart);
+        solarChart(data.solarChart);
+        windChart(data.windChart);
+    });
 });
 
 const oilChart = (data) => {
     const margin = { top: 40, right: 40, bottom: 40, left: 80 },
-        width = 1024 - margin.left - margin.right,
+        width = parseInt(d3.select('#oil-chart').style('width'), 10) - margin.left - margin.right,
         height = 512 - margin.top - margin.bottom;
 
     const svg = d3.select('#oil-chart')
         .append('svg')
         .attr('width', width + margin.left + margin.right)
         .attr('height', height + margin.top + margin.bottom)
+        .attr('preserveAspectRatio', 'xMidYMid meet')
         .append('g')
         .attr('transform', `translate(${margin.left}, ${margin.top})`);
 

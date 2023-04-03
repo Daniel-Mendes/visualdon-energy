@@ -21,7 +21,7 @@
         height: 100%;
 
         #bubbleGroup {
-            transform: translate(600px, -340px);
+            transform: translate(350px, -500px);
 
             .st5 {
                 fill:#946EB5;
@@ -43,7 +43,7 @@
     }
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     #nuclear {
         #ground {
             height: 227px;

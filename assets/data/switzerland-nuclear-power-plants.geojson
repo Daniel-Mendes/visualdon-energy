@@ -1,0 +1,53 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "Power station": "Leibstadt",
+        "MW": 1220,
+        "# Units": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.18472, 47.60306]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Power station": "Beznau I et II",
+        "MW": 365,
+        "# Units": 2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.5, 47.3]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Power station": "Gösgen",
+        "MW": 1035,
+        "# Units": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [7.9680556, 47.3663889]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Power station": "Mühleberg",
+        "MW": 335,
+        "# Units": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [7.268, 46.9653]
+      }
+    }
+  ]
+}
