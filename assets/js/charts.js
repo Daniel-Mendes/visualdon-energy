@@ -75,10 +75,6 @@ const oilChart = (data) => {
         .x(d => x(d.year))
         .y(d => y(d.oil_consumption));
 
-    const transitionPath = d3
-        .transition()
-        .duration(3000);
-
     const path = svg.append('path')
         .datum(data)
         .attr("fill", "none")
@@ -93,9 +89,49 @@ const oilChart = (data) => {
     path
         .attr("stroke-dashoffset", pathLength)
         .attr("stroke-dasharray", pathLength)
-        .transition(transitionPath)
-        .ease(d3.easeSin)
-        .attr("stroke-dashoffset", 0);
+        // .transition(transitionPath)
+        // .ease(d3.easeSin)
+        // .attr("stroke-dashoffset", 0);
+
+    
+    // Create a new Intersection Observer instance
+    const observer = new IntersectionObserver(
+        entries => {
+            // Loop through the IntersectionObserverEntry objects
+            entries.forEach(entry => {
+                // If the target element is intersecting the viewport
+                if (entry.isIntersecting) {
+                    // Calculate the intersection ratio
+                    const ratio = entry.intersectionRatio;
+
+                    // Update the stroke opacity based on the intersection ratio
+                    path.style("opacity", ratio >= 1 ? 1 : 0);
+
+                    // If the stroke is visible, animate it
+                    if (ratio >= 1) {
+                        const transitionPath = d3
+                                .transition()
+                                .duration(3000);
+
+                        path.transition(transitionPath)
+                            .ease(d3.easeSin)
+                            .attr("stroke-dashoffset", 0);
+
+                        setTimeout(() => {
+                            document.querySelector('#oil-chart').querySelectorAll('text, circle').forEach(element => {
+                                element.style.opacity = 1;
+                            });
+                        }, 3010);
+                    }
+                }
+            });
+        }, {
+            threshold: 1
+        }
+    );
+
+    // Observe the target element
+    observer.observe(document.querySelector('#oil-chart'));
 
     svg.append('g')
         .attr('class', 'axis-lines')
@@ -146,40 +182,45 @@ const oilChart = (data) => {
         .style('font-size', 10)
         .text('Source: Our World in Data');
 
-    setTimeout(() => {
-        // Circle in 1973 crisis
-        svg.append('circle')
-            .attr('cx', x(d3.timeParse("%Y") (1973)))
-            .attr('cy', y(data[1973 - 1960].oil_consumption))
-            .attr('r', 5)
-            .attr('fill', oilColor)
+    /*
+     ** Only when observer is in viewport
+     */
 
-        // Text in 1973 crisis
-        svg.append('text')
-            .attr('x', x(d3.timeParse("%Y") (1973)) - 2)
-            .attr('y', y(data[1973 - 1960].oil_consumption) + 20)
-            .attr('writing-mode', 'vertical-lr')
-            .attr('alignment-baseline', 'middle')
-            .style('font-size', 10)
-            .text('Crise du pétrole de 1973');
+    // Circle in 1973 crisis
+    svg.append('circle')
+        .attr('cx', x(d3.timeParse("%Y") (1973)))
+        .attr('cy', y(data[1973 - 1960].oil_consumption))
+        .attr('r', 5)
+        .attr('fill', oilColor)
+        .style('opacity', 0);
 
-        // Circle in 2008 crisis
-        svg.append('circle')
-            .attr('cx', x(d3.timeParse("%Y") (2008)))
-            .attr('cy', y(data[2008 - 1960].oil_consumption))
-            .attr('r', 5)
-            .attr('fill', oilColor);
+    // Text in 1973 crisis
+    svg.append('text')
+        .attr('x', x(d3.timeParse("%Y") (1973)) - 2)
+        .attr('y', y(data[1973 - 1960].oil_consumption) + 20)
+        .attr('writing-mode', 'vertical-lr')
+        .attr('alignment-baseline', 'middle')
+        .style('font-size', 10)
+        .text('Crise du pétrole de 1973')
+        .style('opacity', 0);
 
-        // Text in 2008 crisis
-        svg.append('text')
-            .attr('x', x(d3.timeParse("%Y") (2008)))
-            .attr('y', y(data[2008 - 1960].oil_consumption) + 15)
-            .attr('writing-mode', 'vertical-lr')
-            .attr('alignment-baseline', 'middle')
-            .style('font-size', 10)
-            .text('Crise financière de 2008');
+    // Circle in 2008 crisis
+    svg.append('circle')
+        .attr('cx', x(d3.timeParse("%Y") (2008)))
+        .attr('cy', y(data[2008 - 1960].oil_consumption))
+        .attr('r', 5)
+        .attr('fill', oilColor)
+        .style('opacity', 0);
 
-    }, 3000);
+    // Text in 2008 crisis
+    svg.append('text')
+        .attr('x', x(d3.timeParse("%Y") (2008)))
+        .attr('y', y(data[2008 - 1960].oil_consumption) + 15)
+        .attr('writing-mode', 'vertical-lr')
+        .attr('alignment-baseline', 'middle')
+        .style('font-size', 10)
+        .text('Crise financière de 2008')
+        .style('opacity', 0);
 }
 
 function hydraulicChart(data) {
