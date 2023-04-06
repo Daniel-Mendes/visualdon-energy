@@ -1,4 +1,4 @@
-import gsap from "gsap";
+import { gsap, Power1 } from "gsap";
 import { onClassChange } from "./utils.js";
 
 const bubblesTimeline = gsap.fromTo('#bubbleGroup > *',
@@ -16,9 +16,10 @@ const bubblesTimeline = gsap.fromTo('#bubbleGroup > *',
     },
     transformOrigin: "50% 50%",
     duration: 'random(30, 50)',
-    ease: 'power1.out',
+    ease: Power1.easeOut,
     x: 'random(-350, 300)'
-}).seek(1000);
+  }
+).seek(1000);
 
 const nuclearReactor = document.querySelector('#nuclear #nuclear-reactor');
 

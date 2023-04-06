@@ -54,31 +54,13 @@
   }
 
   .wind-turbine .turbine {
-    transform-origin: center 62.5%;
-    transform-box: fill-box;
-
-    animation-duration: 7s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-name: turbine;
-
     &#turbine-1 {
       animation-delay: 3s;
     }
   }
 
-  .wind-turbine.speed-up .turbine {
-    animation-duration: 1s;
-  }
-
   .section-body {
     background-color: rgba(var(--color-wind), var(--section-body-opacity));
-  }
-}
-
-@keyframes turbine {
-  to {
-    transform: rotate(1turn);
   }
 }
 

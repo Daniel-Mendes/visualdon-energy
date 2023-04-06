@@ -23,40 +23,6 @@
     
         transform: translate(-50%, -50%);
 
-        &.speed-up {
-            #baseline,
-            #oil-pipe circle,
-            #weight {
-                animation-duration: 1s;
-            }
-        }
-
-        #oil-pipe {
-            circle {
-                animation-duration: 3s;
-                animation-timing-function: ease;
-                animation-iteration-count: infinite;
-                animation-name: oil;
-            }
-        }
-
-        #baseline {
-            transform-origin: center 62.5%;
-            transform-box: fill-box;
-        
-            animation-duration: 7s;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-            animation-name: pumping-oil-baseline;
-        }
-
-        #weight {
-            animation-duration: 7s;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-            animation-name: pumping-oil-weight;
-        }
-
         #weight-half-circle {
             transform-origin: center 62.5%;
             transform: scale(0.15) rotate(90deg) translate(-480px, -140px);
@@ -77,39 +43,6 @@
                 }
             }
         }
-    }
-}
-
-@keyframes oil {
-    0% {
-        transform: translateY(0px);
-    }
-    100% {
-        transform: translateY(-55px);
-    }
-}
-
-@keyframes pumping-oil-baseline {
-    0% {
-        transform: rotate(0);
-    }
-    50% {
-        transform: rotate(-20deg);
-    }
-    100% {
-        transform: rotate(0);
-    }
-}
-
-@keyframes pumping-oil-weight {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(14px);
-    }
-    100% {
-        transform: translateY(0);
     }
 }
 

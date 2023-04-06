@@ -5,8 +5,8 @@ export default {
     viteStaticCopy({
       targets: [
         {
-          src: 'assets/data/owid-energy-switzerland-data.json',
-          dest: 'assets/data/'
+          src: 'assets/data/',
+          dest: 'assets'
         }
       ]
     })
