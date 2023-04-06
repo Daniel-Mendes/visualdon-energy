@@ -114,7 +114,6 @@ const oilChart = (data) => {
                                 .duration(3000);
 
                         path.transition(transitionPath)
-                            .ease(d3.easeSin)
                             .attr("stroke-dashoffset", 0);
 
                         setTimeout(() => {

@@ -57,7 +57,7 @@ section {
     }
 
     .section-body {
-      padding: 4rem 20rem;
+      padding: 4rem 20px;
 
       h2 {
         font-size: 4rem;
@@ -77,6 +77,8 @@ section {
 @media screen and (min-width: 768px) {
   section {
     .section-body {
+      padding: 4rem 20% !important;
+
       h2 {
         font-size: 6rem;
       }
