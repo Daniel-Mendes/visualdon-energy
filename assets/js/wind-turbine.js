@@ -1,7 +1,7 @@
 import { gsap, Power0 } from "gsap";
 import { onClassChange } from "./utils.js";
 
-const windTurbineTimeline = gsap.fromTo('.wind-turbine .turbine',
+const windTurbineLeftTimeline = gsap.fromTo('.wind-turbine #turbine-1',
     {
         rotation: 0,
         transformOrigin: 'center 63%'
@@ -14,11 +14,33 @@ const windTurbineTimeline = gsap.fromTo('.wind-turbine .turbine',
     }
 );
 
-const windTurbines = document.querySelector('.wind-turbine');
-    onClassChange(windTurbines, (element) => {
-        if (element.classList.contains('speed-up')) {
-            windTurbineTimeline.timeScale(5);
-        } else {
-            windTurbineTimeline.timeScale(1);
-        }
-    });
+const windTurbineRightTimeline = gsap.fromTo('.wind-turbine #turbine-2',
+    {
+        rotation: 0,
+        transformOrigin: 'center 63%'
+    },
+    {
+        rotation: 360,
+        duration: 3,
+        ease: Power0.easeNone,
+        repeat: -1,
+    }
+).delay(1.5);
+
+const windTurbineLeft = document.querySelector('.wind-turbine:first-child');
+onClassChange(windTurbineLeft, (element) => {
+    if (element.classList.contains('speed-up')) {
+        windTurbineLeftTimeline.timeScale(5);
+    } else {
+        windTurbineLeftTimeline.timeScale(1);
+    }
+});
+
+const windTurbineRight = document.querySelector('.wind-turbine:nth-child(2)');
+onClassChange(windTurbineRight, (element) => {
+    if (element.classList.contains('speed-up')) {
+        windTurbineRightTimeline.timeScale(5);
+    } else {
+        windTurbineRightTimeline.timeScale(1);
+    }
+});
