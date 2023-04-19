@@ -1,62 +1,82 @@
 #oil {
-    .interactive:hover {
-        cursor: url(../images/cursor/x-ray-solid.svg), auto;
-    }
+  .interactive:hover {
+    cursor: url(../images/cursor/x-ray-solid.svg), auto;
+  }
 
+  #underground {
+    background-image: url(../images/oil/underground.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+
+    position: absolute;
+    bottom: 0;
+
+    width: 100vw;
+    height: 400px;
+  }
+
+  #pumping-oil {
+    position: absolute;
+    bottom: 215px;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    #weight-half-circle {
+      transform-origin: center 62.5%;
+      transform: scale(0.15) rotate(90deg) translate(-480px, -140px);
+    }
+  }
+
+  .section-body {
+    background-color: rgba(var(--color-oil), var(--section-body-opacity));
+
+    .oil-not-equal {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      margin: 6rem auto;
+      background-color: rgb(var(--color-oil));
+
+      p {
+        color: #fff;
+        font-size: 2rem;
+        text-align: center;
+        width: min-content;
+      }
+
+      img {
+        width: 6rem;
+        filter: invert(100%);
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #oil {
     #underground {
-        background-image: url(../images/oil/underground.svg);
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: top;
-        
-        position: absolute;
-        bottom: 0;
-        
-        width: 100vw;
-        height: 400px;
+      height: 439px;
     }
 
     #pumping-oil {
-        position: absolute;
-        bottom: 215px;
-        left: 50%;
-    
-        transform: translate(-50%, -50%);
+      bottom: 347px;
+      left: 60%;
 
-        #weight-half-circle {
-            transform-origin: center 62.5%;
-            transform: scale(0.15) rotate(90deg) translate(-480px, -140px);
-        }
+      transform: translateX(-50%) scale(0.5);
     }
 
-    .section-body {
-        background-color: rgba(var(--color-oil), var(--section-body-opacity));
+    .oil-not-equal {
+      gap: 1rem !important;
+      flex-direction: column !important;
 
-        .oil-not-equal {
-            margin: 6rem auto;
-            font-size: 1.8rem;
-
-            span {
-                img {
-                    width: 4rem;
-                    filter: invert(12%) sepia(27%) saturate(4803%) hue-rotate(345deg) brightness(93%) contrast(88%) opacity(0.6);
-                }
-            }
-        }
+      p {
+        font-size: 2.4rem !important;
+      }
     }
-}
-
-@media (max-width: 768px) {
-    #oil {
-        #underground {
-            height: 439px;
-        }
-
-        #pumping-oil {
-            bottom: 347px;
-            left: 60%;
-
-            transform: translateX(-50%) scale(0.5);
-        }
-    }
+  }
 }
