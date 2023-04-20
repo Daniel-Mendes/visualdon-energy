@@ -1,7 +1,7 @@
 import { onClassChange } from "./utils.js";
 
 const interactiveElements = document.querySelectorAll(".interactive");
-const clouds = document.querySelectorAll('.cloud');
+const clouds = document.querySelectorAll(".cloud");
 
 const speedUp = (element) => {
   element.classList.add("speed-up");
@@ -9,7 +9,7 @@ const speedUp = (element) => {
   setTimeout(() => {
     element.classList.remove("speed-up");
   }, 4000);
-}
+};
 
 for (let element of interactiveElements) {
   element.addEventListener("click", () => speedUp(element));
@@ -17,8 +17,8 @@ for (let element of interactiveElements) {
 
 clouds.forEach((cloud) => {
   onClassChange(cloud, (element) => {
-      if (element.classList.contains('interactive')) {
-        element.addEventListener("click", () => speedUp(element));
-      }
+    if (element.classList.contains("interactive")) {
+      element.addEventListener("click", () => speedUp(element));
+    }
   });
 });

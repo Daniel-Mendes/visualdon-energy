@@ -1,24 +1,25 @@
 :root {
-    --font-size: 16px;
-    --font-family: 'Poppins', sans-serif;
+  --font-size: 16px;
+  --font-family: "Poppins", sans-serif;
 
-    --color-oil: 95, 36, 27;
-    --color-hydraulic: 47, 98, 124;
-    --color-nuclear: 122, 107, 195;
-    --color-solar: 227, 176, 48;
-    --color-wind: 0, 148, 53;
+  --color-fossil: 95, 36, 27;
+  --color-hydraulic: 47, 98, 124;
+  --color-nuclear: 122, 107, 195;
+  --color-solar: 227, 176, 48;
+  --color-wind: 0, 148, 53;
 
-    --section-body-opacity: 0.1;
+  --section-body-opacity: 0.1;
 
-    --cursor-default: url(../images/cursor/arrow-pointer-solid.svg), auto;
-    --cursor-magnifying-glass: url(../images/cursor/magnifying-glass-solid.svg), auto;
-    --cursor-hand-left: url(../images/cursor/hand-point-left-solid.svg), auto;
-    --cursor-hand-right: url(../images/cursor/hand-point-right-solid.svg), auto;
-    --cursor-hand-down: url(../images/cursor/hand-point-down-solid.svg), auto;
+  --cursor-default: url(../images/cursor/arrow-pointer-solid.svg), auto;
+  --cursor-magnifying-glass: url(../images/cursor/magnifying-glass-solid.svg),
+    auto;
+  --cursor-hand-left: url(../images/cursor/hand-point-left-solid.svg), auto;
+  --cursor-hand-right: url(../images/cursor/hand-point-right-solid.svg), auto;
+  --cursor-hand-down: url(../images/cursor/hand-point-down-solid.svg), auto;
 }
 
 @media (max-width: 768px) {
-    :root {
-        --font-size: 12px;
-    }
+  :root {
+    --font-size: 12px;
+  }
 }

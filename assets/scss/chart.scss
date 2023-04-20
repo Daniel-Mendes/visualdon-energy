@@ -1,49 +1,49 @@
 .chart {
-    width: 100%;
-    
-    .grid-lines line {
-        stroke-opacity: 0.2;
-    }
+  width: 100%;
+
+  .grid-lines line {
+    stroke-opacity: 0.2;
+  }
 }
 
-#oil-chart {
-    .grid-lines line {
-        stroke: rgb(var(--color-oil));
-    }
+#fossil-chart {
+  .grid-lines line {
+    stroke: rgb(var(--color-fossil));
+  }
 }
 
 #gas-chart {
-    .grid-lines line {
-        stroke: rgb(var(--color-gas));
-    }
+  .grid-lines line {
+    stroke: rgb(var(--color-gas));
+  }
 }
 
 #coal-chart {
-    .grid-lines line {
-        stroke: rgb(var(--color-coal));
-    }
+  .grid-lines line {
+    stroke: rgb(var(--color-coal));
+  }
 }
 
 #nuclear-chart {
-    .grid-lines line {
-        stroke: rgb(var(--color-nuclear));
-    }
+  .grid-lines line {
+    stroke: rgb(var(--color-nuclear));
+  }
 }
 
 #hydro-chart {
-    .grid-lines line {
-        stroke: rgb(var(--color-hydraulic));
-    }
+  .grid-lines line {
+    stroke: rgb(var(--color-hydraulic));
+  }
 }
 
 #solar-chart {
-    .grid-lines line {
-        stroke: rgb(var(--color-solar));
-    }
+  .grid-lines line {
+    stroke: rgb(var(--color-solar));
+  }
 }
 
 #wind-chart {
-    .grid-lines line {
-        stroke: rgb(var(--color-wind));
-    }
+  .grid-lines line {
+    stroke: rgb(var(--color-wind));
+  }
 }

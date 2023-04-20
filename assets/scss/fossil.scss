@@ -1,10 +1,10 @@
-#oil {
+#fossil {
   .interactive:hover {
     cursor: url(../images/cursor/x-ray-solid.svg), auto;
   }
 
   #underground {
-    background-image: url(../images/oil/underground.svg);
+    background-image: url(../images/fossil/underground.svg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top;
@@ -30,35 +30,16 @@
   }
 
   .section-body {
-    background-color: rgba(var(--color-oil), var(--section-body-opacity));
+    background-color: rgba(var(--color-fossil), var(--section-body-opacity));
+  }
 
-    .oil-not-equal {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      gap: 3rem;
-      margin: 6rem auto;
-      background-color: rgb(var(--color-oil));
-
-      p {
-        color: #fff;
-        font-size: 2rem;
-        text-align: center;
-        width: min-content;
-      }
-
-      img {
-        width: 6rem;
-        filter: invert(100%);
-        opacity: 0.8;
-      }
-    }
+  #image-raffinerie {
+    width: 50%;
   }
 }
 
 @media screen and (max-width: 768px) {
-  #oil {
+  #fossil {
     #underground {
       height: 439px;
     }
@@ -70,13 +51,8 @@
       transform: translateX(-50%) scale(0.5);
     }
 
-    .oil-not-equal {
-      gap: 1rem !important;
-      flex-direction: column !important;
-
-      p {
-        font-size: 2.4rem !important;
-      }
+    #image-raffinerie {
+      width: 100%;
     }
   }
 }

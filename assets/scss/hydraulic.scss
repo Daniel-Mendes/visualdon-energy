@@ -1,84 +1,139 @@
 #hydraulic {
-    position: relative;
+  position: relative;
 
-    #layered-peaks {
-        position: absolute;
-        bottom: 0;
+  #layered-peaks {
+    position: absolute;
+    width: 100%;
+    height: 100%;
 
-        width: 100%;
+    overflow: hidden;
 
-        img {
-            width: 100%;
-            height: 890px;
+    #mountain {
+      position: absolute;
+      bottom: 0;
 
-            object-fit: cover;
-            object-position: top left;
-        }
+      width: 100%;
+      height: 890px;
+
+      object-fit: cover;
+      object-position: top left;
     }
 
-    #raining-container {
-        width: 100%;
-        height: 100%;
+    #water-dam {
+      position: absolute;
+      bottom: -10%;
 
-        position: inherit;
-        overflow: hidden;
+      width: 100%;
 
-        visibility: hidden;
-
-        svg {
-            height: inherit;
-
-            use {
-                height: inherit;
-            }
-
-            #rain1, #rain2, #rain3, #rain4 {
-                fill: #BBE8F2;
-            }
-
-            &.raining-left {
-                width: 240px;
-
-                transform: translate(85px, 170px);
-            }
-
-            &.raining-right {
-                display: initial;
-                width: 100px;
-                float: right;
-
-                transform: translate(-145px, 150px);
-            }
-        }
+      object-fit: contain;
     }
 
-    .section-body {
-        background-color: rgba(var(--color-hydraulic), var(--section-body-opacity));
+    #water {
+      position: absolute;
+      bottom: 20%;
+
+      width: 100%;
+      height: 150px;
+
+      background-color: #2da2ce;
     }
+
+    #forest-left,
+    #forest-right {
+      position: absolute;
+      bottom: -10%;
+
+      width: 50%;
+
+      object-fit: cover;
+    }
+
+    #forest-left {
+      left: -30%;
+    }
+
+    #forest-right {
+      right: -30%;
+    }
+  }
+
+  #raining-container {
+    width: 100%;
+    height: 100%;
+
+    position: inherit;
+    overflow: hidden;
+
+    visibility: hidden;
+
+    svg {
+      height: inherit;
+
+      use {
+        height: inherit;
+      }
+
+      #rain1,
+      #rain2,
+      #rain3,
+      #rain4 {
+        fill: #bbe8f2;
+      }
+
+      &.raining-left {
+        width: 240px;
+
+        transform: translate(85px, 170px);
+      }
+
+      &.raining-right {
+        display: initial;
+        width: 100px;
+        float: right;
+
+        transform: translate(-145px, 150px);
+      }
+    }
+  }
+
+  .section-body {
+    background-color: rgba(var(--color-hydraulic), var(--section-body-opacity));
+  }
+
+  #image-barrage {
+    display: block;
+    width: 50%;
+
+    img {
+      width: 100%;
+    }
+  }
 }
 
 @media (max-width: 768px) {
-    #hydraulic {
-        #layered-peaks {
-            img {
-                height: 480px;
-
-                object-position: top right;
-            }
-        }
-
-        #raining-container {
-            svg {
-                &.raining-left {
-                    width: 140px;
-
-                    transform: translate(120px, 80px);
-                }
-
-                &.raining-right {
-                    display: none;
-                }
-            }
-        }
+  #hydraulic {
+    #layered-peaks {
+      #mountain {
+        height: 480px;
+      }
     }
+
+    #raining-container {
+      svg {
+        &.raining-left {
+          width: 140px;
+
+          transform: translate(120px, 80px);
+        }
+
+        &.raining-right {
+          display: none;
+        }
+      }
+    }
+
+    #image-barrage {
+      width: 100%;
+    }
+  }
 }

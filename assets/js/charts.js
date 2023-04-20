@@ -1,10 +1,10 @@
 import * as d3 from "d3";
-import { nuclearColor, oilColor } from "./colors";
+import { nuclearColor, fossilColor } from "./colors";
 
 d3.json("assets/data/owid-energy-switzerland-data.json")
   .then((data) => {
     const dataParsed = {
-      oilChart: [],
+      fossilChart: [],
       hydraulicChart: [],
       nuclearChart: [],
       solarChart: [],
@@ -13,9 +13,9 @@ d3.json("assets/data/owid-energy-switzerland-data.json")
 
     data["Switzerland"].data.forEach((d) => {
       if (d.year >= 1960) {
-        dataParsed.oilChart.push({
+        dataParsed.fossilChart.push({
           year: d3.timeParse("%Y")(d.year),
-          oil_consumption: d.oil_consumption || 0,
+          fossil_fuel_consumption: d.fossil_fuel_consumption || 0,
         });
 
         dataParsed.nuclearChart.push({
@@ -28,20 +28,20 @@ d3.json("assets/data/owid-energy-switzerland-data.json")
     return dataParsed;
   })
   .then((data) => {
-    oilChart(data.oilChart);
+    fossilChart(data.fossilChart);
     hydraulicChart(data.hydraulicChart);
     nuclearChart(data.nuclearChart);
     solarChart(data.solarChart);
     windChart(data.windChart);
   });
 
-const oilChart = (data) => {
+const fossilChart = (data) => {
   const margin = { top: 40, right: 40, bottom: 40, left: 80 },
     width = 1024 - margin.left - margin.right,
     height = 512 - margin.top - margin.bottom;
 
   const svg = d3
-    .select("#oil-chart")
+    .select("#fossil-chart")
     .append("svg")
     .attr(
       "viewBox",
@@ -59,7 +59,7 @@ const oilChart = (data) => {
     .attr("y", -margin.top / 2)
     .attr("text-anchor", "middle")
     .style("font-size", 20)
-    .text("Consommation de pétrole en Suisse");
+    .text("Consommation d'énergies fossiles en Suisse");
 
   const x = d3
     .scaleTime()
@@ -68,19 +68,19 @@ const oilChart = (data) => {
 
   const y = d3
     .scaleLinear()
-    .domain([0, d3.max(data, (d) => d.oil_consumption)])
+    .domain([0, d3.max(data, (d) => d.fossil_fuel_consumption)])
     .range([height, 0]);
 
   const line = d3
     .line()
     .x((d) => x(d.year))
-    .y((d) => y(d.oil_consumption));
+    .y((d) => y(d.fossil_fuel_consumption));
 
   const path = svg
     .append("path")
     .datum(data)
     .attr("fill", "none")
-    .attr("stroke", oilColor)
+    .attr("stroke", fossilColor)
     .attr("stroke-linejoin", "round")
     .attr("stroke-linecap", "round")
     .attr("stroke-width", 1.5)
@@ -116,7 +116,7 @@ const oilChart = (data) => {
 
             setTimeout(() => {
               document
-                .querySelector("#oil-chart")
+                .querySelector("#fossil-chart")
                 .querySelectorAll("text, circle")
                 .forEach((element) => {
                   element.style.opacity = 1;
@@ -132,7 +132,7 @@ const oilChart = (data) => {
   );
 
   // Observe the target element
-  observer.observe(document.querySelector("#oil-chart"));
+  observer.observe(document.querySelector("#fossil-chart"));
 
   svg
     .append("g")
@@ -169,7 +169,7 @@ const oilChart = (data) => {
     .attr("y", -margin.left / 2)
     .attr("text-anchor", "middle")
     .attr("transform", "rotate(-90)")
-    .text("Consommation de pétrole (TJ)");
+    .text("Consommation de combustibles fossiles (en TWh)");
 
   // Label source
   svg
@@ -188,16 +188,16 @@ const oilChart = (data) => {
   svg
     .append("circle")
     .attr("cx", x(d3.timeParse("%Y")(1973)))
-    .attr("cy", y(data[1973 - 1960].oil_consumption))
+    .attr("cy", y(data[1973 - 1960].fossil_fuel_consumption))
     .attr("r", 5)
-    .attr("fill", oilColor)
+    .attr("fill", fossilColor)
     .style("opacity", 0);
 
   // Text in 1973 crisis
   svg
     .append("text")
     .attr("x", x(d3.timeParse("%Y")(1973)) - 2)
-    .attr("y", y(data[1973 - 1960].oil_consumption) + 20)
+    .attr("y", y(data[1973 - 1960].fossil_fuel_consumption) + 20)
     .attr("writing-mode", "vertical-lr")
     .attr("alignment-baseline", "middle")
     .style("font-size", 10)
@@ -208,24 +208,44 @@ const oilChart = (data) => {
   svg
     .append("circle")
     .attr("cx", x(d3.timeParse("%Y")(2008)))
-    .attr("cy", y(data[2008 - 1960].oil_consumption))
+    .attr("cy", y(data[2008 - 1960].fossil_fuel_consumption))
     .attr("r", 5)
-    .attr("fill", oilColor)
+    .attr("fill", fossilColor)
     .style("opacity", 0);
 
   // Text in 2008 crisis
   svg
     .append("text")
     .attr("x", x(d3.timeParse("%Y")(2008)))
-    .attr("y", y(data[2008 - 1960].oil_consumption) + 15)
+    .attr("y", y(data[2008 - 1960].fossil_fuel_consumption) + 15)
     .attr("writing-mode", "vertical-lr")
     .attr("alignment-baseline", "middle")
     .style("font-size", 10)
     .text("Crise financière de 2008")
     .style("opacity", 0);
+
+  // Circle in 2015 Paris Agreement
+  svg
+    .append("circle")
+    .attr("cx", x(d3.timeParse("%Y")(2015)))
+    .attr("cy", y(data[2015 - 1960].fossil_fuel_consumption))
+    .attr("r", 5)
+    .attr("fill", fossilColor)
+    .style("opacity", 0);
+
+  // Text in 2015 Paris Agreement
+  svg
+    .append("text")
+    .attr("x", x(d3.timeParse("%Y")(2015)))
+    .attr("y", y(data[2015 - 1960].fossil_fuel_consumption) + 15)
+    .attr("writing-mode", "vertical-lr")
+    .attr("alignment-baseline", "middle")
+    .style("font-size", 10)
+    .text("Accord de Paris")
+    .style("opacity", 0);
 };
 
-function hydraulicChart(data) {}
+const hydraulicChart = (data) => {};
 
 const nuclearChart = (data) => {
   const margin = { top: 40, right: 40, bottom: 40, left: 80 },
@@ -470,6 +490,6 @@ const nuclearChart = (data) => {
   }, 3000);
 };
 
-function solarChart(data) {}
+const solarChart = (data) => {};
 
-function windChart(data) {}
+const windChart = (data) => {};
