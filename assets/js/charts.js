@@ -91,48 +91,6 @@ const fossilChart = (data) => {
   path
     .attr("stroke-dashoffset", pathLength)
     .attr("stroke-dasharray", pathLength);
-  // .transition(transitionPath)
-  // .ease(d3.easeSin)
-  // .attr("stroke-dashoffset", 0);
-
-  // Create a new Intersection Observer instance
-  const observer = new IntersectionObserver(
-    (entries) => {
-      // Loop through the IntersectionObserverEntry objects
-      entries.forEach((entry) => {
-        // If the target element is intersecting the viewport
-        if (entry.isIntersecting) {
-          // Calculate the intersection ratio
-          const ratio = entry.intersectionRatio;
-
-          // Update the stroke opacity based on the intersection ratio
-          path.style("opacity", ratio >= 1 ? 1 : 0);
-
-          // If the stroke is visible, animate it
-          if (ratio >= 1) {
-            const transitionPath = d3.transition().duration(3000);
-
-            path.transition(transitionPath).attr("stroke-dashoffset", 0);
-
-            setTimeout(() => {
-              document
-                .querySelector("#fossil-chart")
-                .querySelectorAll("text, circle")
-                .forEach((element) => {
-                  element.style.opacity = 1;
-                });
-            }, 3010);
-          }
-        }
-      });
-    },
-    {
-      threshold: 1,
-    }
-  );
-
-  // Observe the target element
-  observer.observe(document.querySelector("#fossil-chart"));
 
   svg
     .append("g")
@@ -179,10 +137,6 @@ const fossilChart = (data) => {
     .attr("text-anchor", "end")
     .style("font-size", 10)
     .text("Source: Our World in Data");
-
-  /*
-   ** Only when observer is in viewport
-   */
 
   // Circle in 1973 crisis
   svg
@@ -288,8 +242,6 @@ const nuclearChart = (data) => {
     .x((d) => x(d.year))
     .y((d) => y(d.nuclear_electricity));
 
-  const transitionPath = d3.transition().duration(3000);
-
   const path = svg
     .append("path")
     .datum(data)
@@ -304,10 +256,7 @@ const nuclearChart = (data) => {
 
   path
     .attr("stroke-dashoffset", pathLength)
-    .attr("stroke-dasharray", pathLength)
-    .transition(transitionPath)
-    .ease(d3.easeSin)
-    .attr("stroke-dashoffset", 0);
+    .attr("stroke-dasharray", pathLength);
 
   svg
     .append("g")
@@ -362,7 +311,8 @@ const nuclearChart = (data) => {
       .attr("cx", x(d3.timeParse("%Y")(1967)))
       .attr("cy", y(data[1967 - 1960].nuclear_electricity))
       .attr("r", 5)
-      .attr("fill", nuclearColor);
+      .attr("fill", nuclearColor)
+      .style("opacity", 0);
 
     // Text in 1967 centrale nucléaire expérimentale de Lucens
     svg
@@ -373,7 +323,8 @@ const nuclearChart = (data) => {
       .attr("writing-mode", "vertical-lr")
       .attr("alignment-baseline", "middle")
       .style("font-size", 10)
-      .text("Centrale nucléaire expérimentale de Lucens en 1967");
+      .text("Centrale nucléaire expérimentale de Lucens en 1967")
+      .style("opacity", 0);
 
     // Circle in 1969 Beznau I
     svg
@@ -381,7 +332,8 @@ const nuclearChart = (data) => {
       .attr("cx", x(d3.timeParse("%Y")(1969)))
       .attr("cy", y(data[1969 - 1960].nuclear_electricity))
       .attr("r", 5)
-      .attr("fill", nuclearColor);
+      .attr("fill", nuclearColor)
+      .style("opacity", 0);
 
     // Text in 1969 Beznau I
     svg
@@ -392,7 +344,8 @@ const nuclearChart = (data) => {
       .attr("writing-mode", "vertical-lr")
       .attr("alignment-baseline", "middle")
       .style("font-size", 10)
-      .text("Beznau I en 1969");
+      .text("Beznau I en 1969")
+      .style("opacity", 0);
 
     // Circle in 1971 Beznau II
     svg
@@ -400,7 +353,8 @@ const nuclearChart = (data) => {
       .attr("cx", x(d3.timeParse("%Y")(1971)))
       .attr("cy", y(data[1971 - 1960].nuclear_electricity))
       .attr("r", 5)
-      .attr("fill", nuclearColor);
+      .attr("fill", nuclearColor)
+      .style("opacity", 0);
 
     // Text in 1971 Beznau II
     svg
@@ -411,7 +365,8 @@ const nuclearChart = (data) => {
       .attr("writing-mode", "vertical-lr")
       .attr("alignment-baseline", "middle")
       .style("font-size", 10)
-      .text("Beznau II en 1971");
+      .text("Beznau II en 1971")
+      .style("opacity", 0);
 
     // Circle in 1972 Mühleberg
     svg
@@ -419,7 +374,8 @@ const nuclearChart = (data) => {
       .attr("cx", x(d3.timeParse("%Y")(1972)))
       .attr("cy", y(data[1972 - 1960].nuclear_electricity))
       .attr("r", 5)
-      .attr("fill", nuclearColor);
+      .attr("fill", nuclearColor)
+      .style("opacity", 0);
 
     // Text in 1972 Mühleberg
     svg
@@ -430,7 +386,8 @@ const nuclearChart = (data) => {
       .attr("writing-mode", "vertical-lr")
       .attr("alignment-baseline", "middle")
       .style("font-size", 10)
-      .text("Mühleberg en 1972");
+      .text("Mühleberg en 1972")
+      .style("opacity", 0);
 
     // Circle in 1979 Gösgen
     svg
@@ -438,7 +395,8 @@ const nuclearChart = (data) => {
       .attr("cx", x(d3.timeParse("%Y")(1979)))
       .attr("cy", y(data[1979 - 1960].nuclear_electricity))
       .attr("r", 5)
-      .attr("fill", nuclearColor);
+      .attr("fill", nuclearColor)
+      .style("opacity", 0);
 
     // Text in 1979 Gösgen
     svg
@@ -449,7 +407,8 @@ const nuclearChart = (data) => {
       .attr("writing-mode", "vertical-lr")
       .attr("alignment-baseline", "middle")
       .style("font-size", 10)
-      .text("Gösgen en 1979");
+      .text("Gösgen en 1979")
+      .style("opacity", 0);
 
     // Circle in 1984 Leibstadt
     svg
@@ -457,7 +416,8 @@ const nuclearChart = (data) => {
       .attr("cx", x(d3.timeParse("%Y")(1984)))
       .attr("cy", y(data[1984 - 1960].nuclear_electricity))
       .attr("r", 5)
-      .attr("fill", nuclearColor);
+      .attr("fill", nuclearColor)
+      .style("opacity", 0);
 
     // Text in 1984 Leibstadt
     svg
@@ -468,7 +428,8 @@ const nuclearChart = (data) => {
       .attr("writing-mode", "vertical-lr")
       .attr("alignment-baseline", "middle")
       .style("font-size", 10)
-      .text("Leibstadt en 1984");
+      .text("Leibstadt en 1984")
+      .style("opacity", 0);
 
     // Circle in 2011 Fukushima accident
     svg
@@ -476,7 +437,8 @@ const nuclearChart = (data) => {
       .attr("cx", x(d3.timeParse("%Y")(2011)))
       .attr("cy", y(data[2011 - 1960].nuclear_electricity))
       .attr("r", 5)
-      .attr("fill", nuclearColor);
+      .attr("fill", nuclearColor)
+      .style("opacity", 0);
 
     // Text in 2011 Fukushima accident
     svg
@@ -486,10 +448,56 @@ const nuclearChart = (data) => {
       .attr("writing-mode", "vertical-lr")
       .attr("alignment-baseline", "middle")
       .style("font-size", 10)
-      .text("Accident de Fukushima en 2011");
+      .text("Accident de Fukushima en 2011")
+      .style("opacity", 0);
   }, 3000);
 };
 
 const solarChart = (data) => {};
 
 const windChart = (data) => {};
+
+/*
+ ** Only when observer is in viewport
+ */
+
+// Create a new Intersection Observer instance
+const observer = new IntersectionObserver(
+  (entries) => {
+    // Loop through the IntersectionObserverEntry objects
+    entries.forEach((entry) => {
+      // If the target element is intersecting the viewport
+      if (entry.isIntersecting) {
+        // Calculate the intersection ratio
+        const ratio = entry.intersectionRatio;
+
+        // Update the stroke opacity based on the intersection ratio
+        entry.target.style.opacity = ratio >= 1 ? 1 : 0;
+
+        // If the stroke is visible, animate it
+        if (ratio >= 1) {
+          const transitionPath = d3.transition().duration(3000);
+          const path = d3.select(entry.target.querySelector("path"));
+
+          path.transition(transitionPath).attr("stroke-dashoffset", 0);
+
+          setTimeout(() => {
+            entry.target.querySelectorAll("text, circle").forEach((element) => {
+              element.style.opacity = 1;
+            });
+          }, 3010);
+        }
+      }
+    });
+  },
+  {
+    threshold: 1,
+  }
+);
+
+// Observe the target elements
+document
+  .querySelectorAll("#fossil-chart, #nuclear-chart")
+  .forEach((element) => {
+    observer.observe(element);
+  });
