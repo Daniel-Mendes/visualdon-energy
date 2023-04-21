@@ -138,65 +138,82 @@ const fossilChart = (data) => {
     .style("font-size", 10)
     .text("Source: Our World in Data");
 
+  // Point of interest in 2008 crisis
+  const pointOfInterest1973Crisis = svg
+    .append("g")
+    .attr("class", "point-of-interest")
+    .style("opacity", 0)
+    .attr(
+      "transform",
+      `translate(${x(d3.timeParse("%Y")(1973))}, ${y(
+        data[1973 - 1960].fossil_fuel_consumption
+      )})`
+    );
+
   // Circle in 1973 crisis
-  svg
+  pointOfInterest1973Crisis
     .append("circle")
-    .attr("cx", x(d3.timeParse("%Y")(1973)))
-    .attr("cy", y(data[1973 - 1960].fossil_fuel_consumption))
     .attr("r", 5)
-    .attr("fill", fossilColor)
-    .style("opacity", 0);
+    .attr("fill", fossilColor);
 
   // Text in 1973 crisis
-  svg
+  pointOfInterest1973Crisis
     .append("text")
-    .attr("x", x(d3.timeParse("%Y")(1973)) - 2)
-    .attr("y", y(data[1973 - 1960].fossil_fuel_consumption) + 20)
+    .attr("y", 20)
     .attr("writing-mode", "vertical-lr")
     .attr("alignment-baseline", "middle")
     .style("font-size", 10)
-    .text("Crise du pétrole de 1973")
-    .style("opacity", 0);
+    .text("Crise du pétrole de 1973");
 
-  // Circle in 2008 crisis
-  svg
+  // Point of interest in 2008 crisis
+  const pointOfInterest2008Crisis = svg
+    .append("g")
+    .attr("class", "point-of-interest")
+    .style("opacity", 0)
+    .attr(
+      "transform",
+      `translate(${x(d3.timeParse("%Y")(2008))}, ${y(
+        data[2008 - 1960].fossil_fuel_consumption
+      )})`
+    );
+
+  pointOfInterest2008Crisis
     .append("circle")
-    .attr("cx", x(d3.timeParse("%Y")(2008)))
-    .attr("cy", y(data[2008 - 1960].fossil_fuel_consumption))
     .attr("r", 5)
-    .attr("fill", fossilColor)
-    .style("opacity", 0);
+    .attr("fill", fossilColor);
 
-  // Text in 2008 crisis
-  svg
+  pointOfInterest2008Crisis
     .append("text")
-    .attr("x", x(d3.timeParse("%Y")(2008)))
-    .attr("y", y(data[2008 - 1960].fossil_fuel_consumption) + 15)
+    .attr("y", 15)
     .attr("writing-mode", "vertical-lr")
     .attr("alignment-baseline", "middle")
     .style("font-size", 10)
-    .text("Crise financière de 2008")
-    .style("opacity", 0);
+    .text("Crise financière de 2008");
 
-  // Circle in 2015 Paris Agreement
-  svg
+  // Point of interest in 2015 Paris Agreement
+  const pointOfInterestParisAgreement = svg
+    .append("g")
+    .attr("class", "point-of-interest")
+    .style("opacity", 0)
+    .attr(
+      "transform",
+      `translate(${x(d3.timeParse("%Y")(2015))}, ${y(
+        data[2015 - 1960].fossil_fuel_consumption
+      )})`
+    );
+
+  pointOfInterestParisAgreement
     .append("circle")
-    .attr("cx", x(d3.timeParse("%Y")(2015)))
-    .attr("cy", y(data[2015 - 1960].fossil_fuel_consumption))
     .attr("r", 5)
-    .attr("fill", fossilColor)
-    .style("opacity", 0);
+    .attr("fill", fossilColor);
 
-  // Text in 2015 Paris Agreement
-  svg
+  pointOfInterestParisAgreement
     .append("text")
-    .attr("x", x(d3.timeParse("%Y")(2015)))
-    .attr("y", y(data[2015 - 1960].fossil_fuel_consumption) + 15)
+    .attr("y", 15)
     .attr("writing-mode", "vertical-lr")
     .attr("alignment-baseline", "middle")
     .style("font-size", 10)
-    .text("Accord de Paris")
-    .style("opacity", 0);
+    .text("Accord de Paris");
 };
 
 const hydraulicChart = (data) => {};
@@ -304,165 +321,214 @@ const nuclearChart = (data) => {
     .style("font-size", 10)
     .text("Source: Our World in Data");
 
-  setTimeout(() => {
-    // Circle in 1967 centrale nucléaire expérimentale de Lucens
-    svg
-      .append("circle")
-      .attr("cx", x(d3.timeParse("%Y")(1967)))
-      .attr("cy", y(data[1967 - 1960].nuclear_electricity))
-      .attr("r", 5)
-      .attr("fill", nuclearColor)
-      .style("opacity", 0);
+  // Point of interest in 1967 centrale nucléaire expérimentale de Lucens
+  const pointOfInterest1967Lucens = svg
+    .append("g")
+    .attr("class", "point-of-interest")
+    .style("opacity", 0)
+    .attr(
+      "transform",
+      `translate(${x(d3.timeParse("%Y")(1967))}, ${y(
+        data[1967 - 1960].nuclear_electricity
+      )})`
+    );
 
-    // Text in 1967 centrale nucléaire expérimentale de Lucens
-    svg
-      .append("text")
-      .attr("x", x(d3.timeParse("%Y")(1967)) - 2)
-      .attr("y", y(data[1967 - 1960].nuclear_electricity) - 20)
-      .attr("text-anchor", "end")
-      .attr("writing-mode", "vertical-lr")
-      .attr("alignment-baseline", "middle")
-      .style("font-size", 10)
-      .text("Centrale nucléaire expérimentale de Lucens en 1967")
-      .style("opacity", 0);
+  // Circle in 1967 centrale nucléaire expérimentale de Lucens
+  pointOfInterest1967Lucens
+    .append("circle")
+    .attr("r", 5)
+    .attr("fill", nuclearColor);
 
-    // Circle in 1969 Beznau I
-    svg
-      .append("circle")
-      .attr("cx", x(d3.timeParse("%Y")(1969)))
-      .attr("cy", y(data[1969 - 1960].nuclear_electricity))
-      .attr("r", 5)
-      .attr("fill", nuclearColor)
-      .style("opacity", 0);
+  // Text in 1967 centrale nucléaire expérimentale de Lucens
+  pointOfInterest1967Lucens
+    .append("text")
+    .attr("x", -2)
+    .attr("y", -20)
+    .attr("text-anchor", "end")
+    .attr("writing-mode", "vertical-lr")
+    .attr("alignment-baseline", "middle")
+    .style("font-size", 10)
+    .text("Centrale nucléaire expérimentale de Lucens en 1967");
 
-    // Text in 1969 Beznau I
-    svg
-      .append("text")
-      .attr("x", x(d3.timeParse("%Y")(1969)) - 2)
-      .attr("y", y(data[1969 - 1960].nuclear_electricity) - 20)
-      .attr("text-anchor", "end")
-      .attr("writing-mode", "vertical-lr")
-      .attr("alignment-baseline", "middle")
-      .style("font-size", 10)
-      .text("Beznau I en 1969")
-      .style("opacity", 0);
+  // Point of interest in 1969 Beznau I
+  const pointOfInterest1969Beznau1 = svg
+    .append("g")
+    .attr("class", "point-of-interest")
+    .style("opacity", 0)
+    .attr(
+      "transform",
+      `translate(${x(d3.timeParse("%Y")(1969))}, ${y(
+        data[1969 - 1960].nuclear_electricity
+      )})`
+    );
 
-    // Circle in 1971 Beznau II
-    svg
-      .append("circle")
-      .attr("cx", x(d3.timeParse("%Y")(1971)))
-      .attr("cy", y(data[1971 - 1960].nuclear_electricity))
-      .attr("r", 5)
-      .attr("fill", nuclearColor)
-      .style("opacity", 0);
+  // Circle in 1969 Beznau I
+  pointOfInterest1969Beznau1
+    .append("circle")
+    .attr("r", 5)
+    .attr("fill", nuclearColor);
 
-    // Text in 1971 Beznau II
-    svg
-      .append("text")
-      .attr("x", x(d3.timeParse("%Y")(1971)) - 2)
-      .attr("y", y(data[1971 - 1960].nuclear_electricity) - 20)
-      .attr("text-anchor", "end")
-      .attr("writing-mode", "vertical-lr")
-      .attr("alignment-baseline", "middle")
-      .style("font-size", 10)
-      .text("Beznau II en 1971")
-      .style("opacity", 0);
+  // Text in 1969 Beznau I
+  pointOfInterest1969Beznau1
+    .append("text")
+    .attr("x", -2)
+    .attr("y", -20)
+    .attr("text-anchor", "end")
+    .attr("writing-mode", "vertical-lr")
+    .attr("alignment-baseline", "middle")
+    .style("font-size", 10)
+    .text("Beznau I en 1969");
 
-    // Circle in 1972 Mühleberg
-    svg
-      .append("circle")
-      .attr("cx", x(d3.timeParse("%Y")(1972)))
-      .attr("cy", y(data[1972 - 1960].nuclear_electricity))
-      .attr("r", 5)
-      .attr("fill", nuclearColor)
-      .style("opacity", 0);
+  // Point of interest in 1971 Beznau II
+  const pointOfInterest1971Beznau2 = svg
+    .append("g")
+    .attr("class", "point-of-interest")
+    .style("opacity", 0)
+    .attr(
+      "transform",
+      `translate(${x(d3.timeParse("%Y")(1971))}, ${y(
+        data[1971 - 1960].nuclear_electricity
+      )})`
+    );
 
-    // Text in 1972 Mühleberg
-    svg
-      .append("text")
-      .attr("x", x(d3.timeParse("%Y")(1972)) - 2)
-      .attr("y", y(data[1972 - 1960].nuclear_electricity) - 20)
-      .attr("text-anchor", "end")
-      .attr("writing-mode", "vertical-lr")
-      .attr("alignment-baseline", "middle")
-      .style("font-size", 10)
-      .text("Mühleberg en 1972")
-      .style("opacity", 0);
+  // Circle in 1971 Beznau II
+  pointOfInterest1971Beznau2
+    .append("circle")
+    .attr("r", 5)
+    .attr("fill", nuclearColor);
 
-    // Circle in 1979 Gösgen
-    svg
-      .append("circle")
-      .attr("cx", x(d3.timeParse("%Y")(1979)))
-      .attr("cy", y(data[1979 - 1960].nuclear_electricity))
-      .attr("r", 5)
-      .attr("fill", nuclearColor)
-      .style("opacity", 0);
+  // Text in 1971 Beznau II
+  pointOfInterest1971Beznau2
+    .append("text")
+    .attr("x", -2)
+    .attr("y", -20)
+    .attr("text-anchor", "end")
+    .attr("writing-mode", "vertical-lr")
+    .attr("alignment-baseline", "middle")
+    .style("font-size", 10)
+    .text("Beznau II en 1971");
 
-    // Text in 1979 Gösgen
-    svg
-      .append("text")
-      .attr("x", x(d3.timeParse("%Y")(1979)) - 2)
-      .attr("y", y(data[1979 - 1960].nuclear_electricity) - 20)
-      .attr("text-anchor", "end")
-      .attr("writing-mode", "vertical-lr")
-      .attr("alignment-baseline", "middle")
-      .style("font-size", 10)
-      .text("Gösgen en 1979")
-      .style("opacity", 0);
+  // Point of interest in 1972 Mühleberg
+  const pointOfInterest1972Muhleberg = svg
+    .append("g")
+    .attr("class", "point-of-interest")
+    .style("opacity", 0)
+    .attr(
+      "transform",
+      `translate(${x(d3.timeParse("%Y")(1972))}, ${y(
+        data[1972 - 1960].nuclear_electricity
+      )})`
+    );
 
-    // Circle in 1984 Leibstadt
-    svg
-      .append("circle")
-      .attr("cx", x(d3.timeParse("%Y")(1984)))
-      .attr("cy", y(data[1984 - 1960].nuclear_electricity))
-      .attr("r", 5)
-      .attr("fill", nuclearColor)
-      .style("opacity", 0);
+  // Circle in 1972 Mühleberg
+  pointOfInterest1972Muhleberg
+    .append("circle")
+    .attr("r", 5)
+    .attr("fill", nuclearColor);
 
-    // Text in 1984 Leibstadt
-    svg
-      .append("text")
-      .attr("x", x(d3.timeParse("%Y")(1984)) - 2)
-      .attr("y", y(data[1984 - 1960].nuclear_electricity) - 20)
-      .attr("text-anchor", "end")
-      .attr("writing-mode", "vertical-lr")
-      .attr("alignment-baseline", "middle")
-      .style("font-size", 10)
-      .text("Leibstadt en 1984")
-      .style("opacity", 0);
+  // Text in 1972 Mühleberg
+  pointOfInterest1972Muhleberg
+    .append("text")
+    .attr("x", -2)
+    .attr("y", -20)
+    .attr("text-anchor", "end")
+    .attr("writing-mode", "vertical-lr")
+    .attr("alignment-baseline", "middle")
+    .style("font-size", 10)
+    .text("Mühleberg en 1972");
 
-    // Circle in 2011 Fukushima accident
-    svg
-      .append("circle")
-      .attr("cx", x(d3.timeParse("%Y")(2011)))
-      .attr("cy", y(data[2011 - 1960].nuclear_electricity))
-      .attr("r", 5)
-      .attr("fill", nuclearColor)
-      .style("opacity", 0);
+  // Point of interest in 1979 Gösgen
+  const pointOfInterest1979Gosgen = svg
+    .append("g")
+    .attr("class", "point-of-interest")
+    .style("opacity", 0)
+    .attr(
+      "transform",
+      `translate(${x(d3.timeParse("%Y")(1979))}, ${y(
+        data[1979 - 1960].nuclear_electricity
+      )})`
+    );
 
-    // Text in 2011 Fukushima accident
-    svg
-      .append("text")
-      .attr("x", x(d3.timeParse("%Y")(2011)))
-      .attr("y", y(data[2011 - 1960].nuclear_electricity) + 15)
-      .attr("writing-mode", "vertical-lr")
-      .attr("alignment-baseline", "middle")
-      .style("font-size", 10)
-      .text("Accident de Fukushima en 2011")
-      .style("opacity", 0);
-  }, 3000);
+  // Circle in 1979 Gösgen
+  pointOfInterest1979Gosgen
+    .append("circle")
+    .attr("r", 5)
+    .attr("fill", nuclearColor);
+
+  // Text in 1979 Gösgen
+  pointOfInterest1979Gosgen
+    .append("text")
+    .attr("x", -2)
+    .attr("y", -20)
+    .attr("text-anchor", "end")
+    .attr("writing-mode", "vertical-lr")
+    .attr("alignment-baseline", "middle")
+    .style("font-size", 10)
+    .text("Gösgen en 1979");
+
+  // Point of interest in 1984 Leibstadt
+  const pointOfInterest1984Leibstadt = svg
+    .append("g")
+    .attr("class", "point-of-interest")
+    .style("opacity", 0)
+    .attr(
+      "transform",
+      `translate(${x(d3.timeParse("%Y")(1984))}, ${y(
+        data[1984 - 1960].nuclear_electricity
+      )})`
+    );
+
+  // Circle in 1984 Leibstadt
+  pointOfInterest1984Leibstadt
+    .append("circle")
+    .attr("r", 5)
+    .attr("fill", nuclearColor);
+
+  // Text in 1984 Leibstadt
+  pointOfInterest1984Leibstadt
+    .append("text")
+    .attr("x", -2)
+    .attr("y", -20)
+    .attr("text-anchor", "end")
+    .attr("writing-mode", "vertical-lr")
+    .attr("alignment-baseline", "middle")
+    .style("font-size", 10)
+    .text("Leibstadt en 1984");
+
+  // Point of interest in 2011 Fukushima accident
+  const pointOfInterestFukushimaAccident = svg
+    .append("g")
+    .attr("class", "point-of-interest")
+    .style("opacity", 0)
+    .attr(
+      "transform",
+      `translate(${x(d3.timeParse("%Y")(2011))}, ${y(
+        data[2011 - 1960].nuclear_electricity
+      )})`
+    );
+
+  // Circle in 2011 Fukushima accident
+  pointOfInterestFukushimaAccident
+    .append("circle")
+    .attr("r", 5)
+    .attr("fill", nuclearColor);
+
+  // Text in 2011 Fukushima accident
+  pointOfInterestFukushimaAccident
+    .append("text")
+    .attr("y", 15)
+    .attr("writing-mode", "vertical-lr")
+    .attr("alignment-baseline", "middle")
+    .style("font-size", 10)
+    .text("Accident de Fukushima en 2011");
 };
 
 const solarChart = (data) => {};
 
 const windChart = (data) => {};
 
-/*
- ** Only when observer is in viewport
- */
-
 // Create a new Intersection Observer instance
-const observer = new IntersectionObserver(
+const observerCharts = new IntersectionObserver(
   (entries) => {
     // Loop through the IntersectionObserverEntry objects
     entries.forEach((entry) => {
@@ -482,9 +548,15 @@ const observer = new IntersectionObserver(
           path.transition(transitionPath).attr("stroke-dashoffset", 0);
 
           setTimeout(() => {
-            entry.target.querySelectorAll("text, circle").forEach((element) => {
-              element.style.opacity = 1;
-            });
+            const elementsToShow = entry.target.querySelectorAll(
+              "g.point-of-interest"
+            );
+
+            for (let i = 0; i < elementsToShow.length; i++) {
+              setTimeout(() => {
+                elementsToShow[i].style.opacity = 1;
+              }, 300 * i);
+            }
           }, 3010);
         }
       }
@@ -496,8 +568,6 @@ const observer = new IntersectionObserver(
 );
 
 // Observe the target elements
-document
-  .querySelectorAll("#fossil-chart, #nuclear-chart")
-  .forEach((element) => {
-    observer.observe(element);
-  });
+document.querySelectorAll(".chart").forEach((element) => {
+  observerCharts.observe(element);
+});

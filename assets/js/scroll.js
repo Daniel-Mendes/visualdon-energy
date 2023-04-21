@@ -3,7 +3,7 @@ import gsap from "gsap";
 const wrapper = document.querySelector("#wrapper");
 const sections = document.querySelectorAll("#wrapper section");
 
-const clouds = document.querySelectorAll('.cloud');
+const clouds = document.querySelectorAll(".cloud");
 
 let currentSection = 0;
 let oldSection = 0;
@@ -21,20 +21,20 @@ const sectionAnimation = (event) => {
     return;
   }
 
-  if (sections[currentSection].id === 'hydraulic') {
+  if (sections[currentSection].id === "hydraulic") {
     clouds.forEach((cloud) => {
-      cloud.classList.add('interactive');
+      cloud.classList.add("interactive");
     });
   } else {
     clouds.forEach((cloud) => {
-      cloud.classList.remove('interactive');
+      cloud.classList.remove("interactive");
     });
   }
 
   gsap.to(wrapper, {
     duration: 1.5,
     ease: "expo.out",
-    x: offsets[currentSection]
+    x: offsets[currentSection],
   });
 };
 
@@ -59,7 +59,10 @@ wrapper.addEventListener("touchend", (event) => {
   let touchX = event.changedTouches[0].clientX;
 
   if (lastTouchX > touchX + 50) {
-    currentSection = currentSection < sections.length - 1 ? currentSection + 1 : currentSection;
+    currentSection =
+      currentSection < sections.length - 1
+        ? currentSection + 1
+        : currentSection;
   } else if (lastTouchX < touchX - 50) {
     currentSection = currentSection > 0 ? currentSection - 1 : currentSection;
   }
@@ -71,11 +74,14 @@ window.addEventListener("keydown", (event) => {
   if (event.key === "ArrowRight") {
     event.preventDefault();
 
-    currentSection = currentSection < sections.length - 1 ? currentSection + 1 : currentSection;
+    currentSection =
+      currentSection < sections.length - 1
+        ? currentSection + 1
+        : currentSection;
     sectionAnimation(event);
   } else if (event.key === "ArrowLeft") {
     event.preventDefault();
-    
+
     currentSection = currentSection > 0 ? currentSection - 1 : currentSection;
     sectionAnimation(event);
   }
@@ -89,12 +95,15 @@ window.addEventListener("click", (event) => {
     sectionAnimation(event);
   } else if (event.clientX > innerWidth - 100) {
     event.preventDefault();
-    
-    currentSection = currentSection < sections.length - 1 ? currentSection + 1 : currentSection;
+
+    currentSection =
+      currentSection < sections.length - 1
+        ? currentSection + 1
+        : currentSection;
     sectionAnimation(event);
   } else if (event.pageY > innerHeight - 100 && event.pageY < innerHeight) {
     window.scrollTo({
-      top: innerHeight
+      top: innerHeight,
     });
   }
 });
@@ -103,14 +112,27 @@ window.addEventListener("resize", sizeIt);
 
 document.body.addEventListener("mousemove", (event) => {
   if (event.clientX < 50 && currentSection > 0) {
-    document.body.style.cursor = getComputedStyle(document.documentElement).getPropertyValue('--cursor-hand-left');
-  } else if (event.clientX > innerWidth - 100 && currentSection < sections.length - 1) {
-    document.body.style.cursor = getComputedStyle(document.documentElement).getPropertyValue('--cursor-hand-right');
+    document.body.style.cursor = getComputedStyle(
+      document.documentElement
+    ).getPropertyValue("--cursor-hand-left");
+  } else if (
+    event.clientX > innerWidth - 100 &&
+    currentSection < sections.length - 1
+  ) {
+    document.body.style.cursor = getComputedStyle(
+      document.documentElement
+    ).getPropertyValue("--cursor-hand-right");
   } else if (event.pageY > innerHeight - 100 && event.pageY < innerHeight) {
-    document.body.style.cursor = getComputedStyle(document.documentElement).getPropertyValue('--cursor-hand-down');
+    document.body.style.cursor = getComputedStyle(
+      document.documentElement
+    ).getPropertyValue("--cursor-hand-down");
   } else if (event.pageY < innerHeight) {
-    document.body.style.cursor = getComputedStyle(document.documentElement).getPropertyValue('--cursor-magnifying-glass');
+    document.body.style.cursor = getComputedStyle(
+      document.documentElement
+    ).getPropertyValue("--cursor-magnifying-glass");
   } else {
-    document.body.style.cursor = getComputedStyle(document.documentElement).getPropertyValue('--cursor-default');
+    document.body.style.cursor = getComputedStyle(
+      document.documentElement
+    ).getPropertyValue("--cursor-default");
   }
 });

@@ -85,38 +85,34 @@ const nuclearPowerPlantsMap = (cantons, nuclearPowerPlants) => {
     .attr("fill", nuclearColor)
     .attr("opacity", 0.5);
 
-  svg
-    .selectAll("circle")
-    .data(nuclearPowerPlants.features)
-    .join((enter) =>
-      enter
-        .append("circle")
-        .attr("cx", (d) => projection(d.geometry.coordinates)[0])
-        .attr("cy", (d) => projection(d.geometry.coordinates)[1])
-        .attr("r", 5)
-        .attr("fill", nuclearColor)
-    )
-    .style("opacity", 0);
+  // Point of interest in 2011 Fukushima accident
+  for (let i = 0; i < nuclearPowerPlants.features.length; i++) {
+    const pointOfInterestPowerPlant = svg
+      .append("g")
+      .attr("class", "point-of-interest")
+      .style("opacity", 0)
+      .attr(
+        "transform",
+        `translate(
+          ${projection(nuclearPowerPlants.features[i].geometry.coordinates)[0]},
+          ${projection(nuclearPowerPlants.features[i].geometry.coordinates)[1]}
+        )`
+      );
 
-  svg
-    .selectAll(".nuclearPowerStationLabel")
-    .data(nuclearPowerPlants.features)
-    .join((enter) =>
-      enter.append("text").attr("class", "nuclearPowerStationLabel")
-    )
-    .attr("x", (d) => projection(d.geometry.coordinates)[0])
-    .attr("y", (d) => projection(d.geometry.coordinates)[1])
-    .attr("transform", "translate(0, 16)")
-    .text((d) => d.properties["Power station"])
-    .attr("text-anchor", "middle")
-    .attr("font-size", 10)
-    .attr("fill", nuclearColor)
-    .style("opacity", 0);
+    pointOfInterestPowerPlant
+      .append("circle")
+      .attr("r", 5)
+      .attr("fill", nuclearColor);
+
+    pointOfInterestPowerPlant
+      .append("text")
+      .attr("transform", "translate(0, 16)")
+      .text(nuclearPowerPlants.features[i].properties["Power station"])
+      .attr("text-anchor", "middle")
+      .attr("font-size", 10)
+      .attr("fill", nuclearColor);
+  }
 };
-
-/*
- ** Only when observer is in viewport
- */
 
 // Create a new Intersection Observer instance
 const observer = new IntersectionObserver(
@@ -140,12 +136,13 @@ const observer = new IntersectionObserver(
 
           setTimeout(() => {
             const elementsToShow = entry.target.querySelectorAll(
-              "text.nuclearPowerStationLabel, circle"
+              "g.point-of-interest"
             );
+
             for (let i = 0; i < elementsToShow.length; i++) {
               setTimeout(() => {
                 elementsToShow[i].style.opacity = 1;
-              }, 150 * i);
+              }, 300 * i);
             }
           }, 1000);
         }
@@ -158,5 +155,4 @@ const observer = new IntersectionObserver(
 );
 
 // Observe the target elements
-const nuclearMap = document.querySelector("#nuclear-power-plants");
-observer.observe(nuclearMap);
+observer.observe(document.querySelector("#nuclear-power-plants"));

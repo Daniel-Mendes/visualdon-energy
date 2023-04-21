@@ -138,6 +138,7 @@
             <img
               src="assets/images/fossil/raffinerie-petrole.jpg"
               id="image-raffinerie"
+              loading="lazy"
             />
           </div>
 
@@ -196,6 +197,7 @@
               src="assets/images/hydraulic/layered-peaks.svg"
               alt="Mountain Snow Peaks"
               id="mountain"
+              loading="lazy"
             />
 
             <div id="water"></div>
@@ -204,18 +206,21 @@
               src="assets/images/hydraulic/water-dam.svg"
               alt="Water Dam"
               id="water-dam"
+              loading="lazy"
             />
 
             <img
               src="assets/images/hydraulic/forest-blob-1.svg"
               alt="Forest Left"
               id="forest-left"
+              loading="lazy"
             />
 
             <img
               src="assets/images/hydraulic/forest-blob-2.svg"
               alt="Forest Right"
               id="forest-right"
+              loading="lazy"
             />
           </div>
 
@@ -267,7 +272,7 @@
             </p>
 
             <picture id="image-barrage">
-              <img src="assets/images/hydraulic/dixence.jpg" />
+              <img src="assets/images/hydraulic/dixence.jpg" loading="lazy" />
               <figcaption>
                 Barrage de la Grande-Dixence, avec ses 285m de hauteur.
               </figcaption>
@@ -1555,6 +1560,7 @@
             <img
               src="assets/images/nuclear/nuclear-reactor.svg"
               alt="Nuclear Reactor"
+              loading="lazy"
             />
           </div>
         </div>
@@ -1581,6 +1587,7 @@
             <img
               src="assets/images/nuclear/centrale_nucleaire.jpg"
               alt="Centrale nucléaire"
+              loading="lazy"
             />
           </div>
 
@@ -1647,6 +1654,7 @@
               <img
                 src="assets/images/solar/solar-panel.svg"
                 alt="solar-panel"
+                loading="lazy"
               />
             </div>
 
@@ -1654,6 +1662,7 @@
               <img
                 src="assets/images/solar/solar-panel.svg"
                 alt="solar-panel"
+                loading="lazy"
               />
             </div>
 
@@ -1661,6 +1670,7 @@
               <img
                 src="assets/images/solar/solar-panel.svg"
                 alt="solar-panel"
+                loading="lazy"
               />
             </div>
 
@@ -1668,6 +1678,7 @@
               <img
                 src="assets/images/solar/solar-panel.svg"
                 alt="solar-panel"
+                loading="lazy"
               />
             </div>
 
@@ -1675,6 +1686,7 @@
               <img
                 src="assets/images/solar/solar-panel.svg"
                 alt="solar-panel"
+                loading="lazy"
               />
             </div>
 
@@ -1682,6 +1694,7 @@
               <img
                 src="assets/images/solar/solar-panel.svg"
                 alt="solar-panel"
+                loading="lazy"
               />
             </div>
           </div>
@@ -1691,6 +1704,7 @@
               <img
                 src="assets/images/solar/solar-panel.svg"
                 alt="solar-panel"
+                loading="lazy"
               />
             </div>
 
@@ -1698,6 +1712,7 @@
               <img
                 src="assets/images/solar/solar-panel.svg"
                 alt="solar-panel"
+                loading="lazy"
               />
             </div>
 
@@ -1705,6 +1720,7 @@
               <img
                 src="assets/images/solar/solar-panel.svg"
                 alt="solar-panel"
+                loading="lazy"
               />
             </div>
 
@@ -1712,6 +1728,7 @@
               <img
                 src="assets/images/solar/solar-panel.svg"
                 alt="solar-panel"
+                loading="lazy"
               />
             </div>
 
@@ -1719,6 +1736,7 @@
               <img
                 src="assets/images/solar/solar-panel.svg"
                 alt="solar-panel"
+                loading="lazy"
               />
             </div>
 
@@ -1726,6 +1744,7 @@
               <img
                 src="assets/images/solar/solar-panel.svg"
                 alt="solar-panel"
+                loading="lazy"
               />
             </div>
           </div>
@@ -1734,14 +1753,30 @@
         <div class="section-body">
           <div>
             <h1>Énergie solaire</h1>
+
+            <p>
+              L'énergie solaire, que l'on trouve à la surface de la terre sous
+              forme de lumière et de chaleur, peut être exploitée de diverses
+              manières: au moyen d'installations photovoltaïques (PV) pour
+              générer de l’électricité, au moyen de capteurs solaires thermiques
+              pour produire de la chaleur (eau chaude et/ou chauffage d'appoint)
+              ou au moyen de concentrateurs pour activer des processus chimiques
+              et produire de l'électricité.
+            </p>
+
+            <img
+              src="assets/images/solar/solar-lac-des-toules.png"
+              loading="lazy"
+            />
           </div>
 
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            repellendus voluptatibus voluptates non, maiores aspernatur unde
-            magnam delectus similique molestiae.
-          </p>
-          <img src="https://picsum.photos/400/300" />
+          <div class="highlight">
+            <h3>En suisse</h3>
+            <p>
+              Il y a 150’000 installations photovoltaïques et 140’000
+              installations solaires thermiques.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -1811,7 +1846,44 @@
               fin du 19e siècle, on s’en sert aussi pour produire de
               l’électricité.
             </p>
-            <img src="https://picsum.photos/400/300" />
+
+            <picture id="image-eolien">
+              <img
+                src="assets/images/wind/mont-crosin-plus-grand-parc.jpg"
+                loading="lazy"
+              />
+              <figcaption>
+                Le plus grand parc éolien abrite seize turbines à vent, il se
+                siture dans le Jura bernois.
+              </figcaption>
+            </picture>
+          </div>
+
+          <div>
+            <h2>Un peu d'histoire</h2>
+
+            <div>
+              <h3>La première installation</h3>
+
+              <p>
+                D'une puissance de 28 kW, la première centrale éolienne suisse a
+                été mise en service en 1986 près de la ferme Soolhof
+                (Langenbruck, dans le canton de Bâle Campagne).
+              </p>
+            </div>
+
+            <div>
+              <h3>Une solution complémentaire</h3>
+
+              <p>
+                En Suisse, les éoliennes produisent deux tiers de leur
+                électricité en hiver, période au cours de laquelle les besoins
+                en énergie pour le chauffage et l’éclairage sont plus élevés.
+                L’énergie éolienne complète ainsi de manière idéale les
+                installations hydroélectriques et solaires, dont la production
+                est plus élevée en été.
+              </p>
+            </div>
           </div>
 
           <div class="highlight">

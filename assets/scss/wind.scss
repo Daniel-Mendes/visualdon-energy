@@ -16,7 +16,8 @@
 
   #wave-left {
     background-image: url(../images/waves/wave-3.svg);
-    filter: brightness(0) saturate(100%) invert(37%) sepia(85%) saturate(2986%) hue-rotate(125deg) brightness(87%) contrast(101%);
+    filter: brightness(0) saturate(100%) invert(37%) sepia(85%) saturate(2986%)
+      hue-rotate(125deg) brightness(87%) contrast(101%);
 
     z-index: 1;
 
@@ -25,7 +26,8 @@
 
   #wave-right {
     background-image: url(../images/waves/wave-1.svg);
-    filter: brightness(0) saturate(100%) invert(100%) sepia(37%) saturate(4260%) hue-rotate(17deg) brightness(93%) contrast(69%);
+    filter: brightness(0) saturate(100%) invert(100%) sepia(37%) saturate(4260%)
+      hue-rotate(17deg) brightness(93%) contrast(69%);
 
     height: 350px;
   }
@@ -62,6 +64,15 @@
   .section-body {
     background-color: rgba(var(--color-wind), var(--section-body-opacity));
   }
+
+  #image-eolien {
+    display: block;
+    width: 50%;
+
+    img {
+      width: 100%;
+    }
+  }
 }
 
 @media (max-width: 768px) {
@@ -73,13 +84,17 @@
 
         transform: translate(-50%);
       }
-    
+
       &:nth-child(2) {
         right: 60px;
         bottom: 160px;
-    
+
         transform: translate(-50%) scale(1.8);
       }
+    }
+
+    #image-eolien {
+      width: 100%;
     }
   }
 }
