@@ -41,7 +41,6 @@ waterTimeline.repeat(-1);
 const clouds = document.querySelectorAll(".cloud");
 const rainingLeft = document.querySelector(".raining-left");
 const rainingRight = document.querySelector(".raining-right");
-const water = document.querySelector("#water");
 
 clouds.forEach((cloud) => {
   onClassChange(cloud, (element) => {
