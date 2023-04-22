@@ -9,25 +9,25 @@
     background-position: left;
 
     transform: scaleX(-1);
-  
+
     position: absolute;
     bottom: 0;
-  
+
     width: 100vw;
     height: 40vh;
   }
 
   #wave-left {
     background-image: url(../images/waves/wave-3.svg);
-  
+
     height: 400px;
 
     z-index: 1;
   }
-  
+
   #wave-right {
     background-image: url(../images/waves/wave-1.svg);
-  
+
     height: 350px;
   }
 
@@ -68,27 +68,27 @@
 
     z-index: 2;
 
-   
     &#solar-panel-batch-1 {
       --deg: -10deg;
 
       bottom: 200px;
       left: 20%;
-  
+
       transform: rotateZ(var(--deg));
     }
-  
+
     &#solar-panel-batch-2 {
       --deg: 8deg;
 
       bottom: 194px;
       right: 30%;
-      
+
       transform: rotateZ(var(--deg));
     }
 
     &.speed-up {
-      filter: brightness(0) saturate(100%) invert(23%) sepia(54%) saturate(3522%) hue-rotate(356deg) brightness(92%) contrast(89%);
+      filter: brightness(0) saturate(100%) invert(23%) sepia(54%)
+        saturate(3522%) hue-rotate(356deg) brightness(92%) contrast(89%);
 
       animation: 0.2s shake ease-in-out infinite;
     }
@@ -96,6 +96,10 @@
 
   .section-body {
     background-color: rgba(var(--color-solar), var(--section-body-opacity));
+  }
+
+  #image-solar-lac-des-toules {
+    width: 50%;
   }
 }
 
@@ -116,13 +120,13 @@
     .solar-panel-batch {
       &#solar-panel-batch-1 {
         --deg: 8deg;
-  
+
         left: 30px;
         bottom: 150px;
 
         scale: 0.9;
       }
-  
+
       &#solar-panel-batch-2 {
         --deg: -14deg;
 
@@ -130,6 +134,9 @@
         right: 40px;
       }
     }
-   
+
+    #image-solar-lac-des-toules {
+      width: 100%;
+    }
   }
 }
