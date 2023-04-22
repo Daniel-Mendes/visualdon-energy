@@ -51,6 +51,12 @@ document.querySelector(".navigation button").addEventListener("click", () => {
 window.addEventListener("scroll", () => {
   const { scrollHeight, clientHeight, scrollTop } = document.documentElement;
 
+  if (scrollTop > 200) {
+    document.querySelector(".navigation .toggle").classList.add("visible");
+  } else {
+    document.querySelector(".navigation .toggle").classList.remove("visible");
+  }
+
   if (scrollHeight - clientHeight - scrollTop < 1) {
     setTimeout(() => {
       document.querySelector(".navigation").classList.add("active");
