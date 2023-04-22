@@ -2,53 +2,56 @@
   width: 100vw;
   height: 100dvh;
 
+  overflow: hidden;
+
   .section-bg {
     width: 100%;
     height: 100%;
-  
+
     background-image: url(../images/background/sky-gradient.svg);
     background-repeat: no-repeat;
     transform: rotateX(180deg);
   }
-  
+
   .cloud {
     --scale: 2;
-  
+
     background-image: url(../images/background/cloud.svg);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-  
+
     position: absolute;
     top: 80px;
     left: 120px;
 
     z-index: 2;
-  
+
     transform: scale(2);
     animation: 4s clouds ease infinite;
-  
+
     height: 100px;
     width: 100px;
 
     &.cloud-left:first-child {
       --scale: 1.5;
-    
+
       left: 200px;
       bottom: 120px;
-    
+
       animation: 4.3s clouds ease infinite;
-    
-      filter: invert(1%) sepia(1%) saturate(477%) hue-rotate(158deg) brightness(99%) contrast(91%);
+
+      filter: invert(1%) sepia(1%) saturate(477%) hue-rotate(158deg)
+        brightness(99%) contrast(91%);
     }
-    
+
     &.cloud-right {
       --scale: 1;
-    
+
       left: auto;
       right: 150px;
       bottom: 300px;
-    
+
       animation: 5s clouds ease infinite;
     }
 
