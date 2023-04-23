@@ -36,10 +36,17 @@
     position: absolute;
     bottom: 150px;
 
-    left: 50%;
-    transform: translate(-50%);
-
     width: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  #nuclear-bubbles {
+    position: absolute;
+    bottom: 80px;
+    left: -160px;
+    width: 100%;
+    height: 100%;
   }
 
   #image-nuclear {
@@ -56,7 +63,10 @@
     #nuclear-reactor {
       bottom: 227px;
 
-      width: 90%;
+      width: 100%;
+    }
+
+    #nuclear-bubbles {
     }
 
     #image-nuclear {
