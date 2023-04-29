@@ -34,9 +34,6 @@ function displaySection() {
 
   // Close navigation
   document.querySelector(".navigation").classList.remove("active");
-
-  // Scroll vers le haut de la page
-  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 window.addEventListener("hashchange", displaySection);
@@ -45,6 +42,25 @@ displaySection();
 
 document.querySelector(".navigation button").addEventListener("click", () => {
   document.querySelector(".navigation").classList.toggle("active");
+});
+
+document.querySelectorAll(".navigation a").forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    // Scroll vers le haut de la page
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    // When the scroll is finished, change the hash
+    const timer = setInterval(() => {
+      if (window.scrollY === 0) {
+        setTimeout(() => {
+          window.location.hash = link.getAttribute("href");
+          clearInterval(timer);
+        }, 250);
+      }
+    }, 250);
+  });
 });
 
 // Ouvrir la navigation quand on est à la fin de la page
