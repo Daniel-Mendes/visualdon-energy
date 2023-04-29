@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import { nuclearColor, fossilColor } from "./colors";
+import { nuclearColor, fossilColor, hydraulicColor } from "./colors";
 
 d3.json("assets/data/owid-energy-switzerland-data.json")
   .then((data) => {
@@ -7,8 +7,6 @@ d3.json("assets/data/owid-energy-switzerland-data.json")
       fossilChart: [],
       hydraulicChart: [],
       nuclearChart: [],
-      solarChart: [],
-      windChart: [],
     };
 
     data["Switzerland"].data.forEach((d) => {
@@ -20,7 +18,12 @@ d3.json("assets/data/owid-energy-switzerland-data.json")
 
         dataParsed.nuclearChart.push({
           year: d3.timeParse("%Y")(d.year),
-          nuclear_electricity: d.nuclear_electricity || 0,
+          nuclear_electricity_production: d.hydro_electricity || 0,
+        });
+
+        dataParsed.hydraulicChart.push({
+          year: d3.timeParse("%Y")(d.year),
+          hydraulic_electricity_production: d.hydro_electricity || 0,
         });
       }
     });
@@ -31,8 +34,6 @@ d3.json("assets/data/owid-energy-switzerland-data.json")
     fossilChart(data.fossilChart);
     hydraulicChart(data.hydraulicChart);
     nuclearChart(data.nuclearChart);
-    solarChart(data.solarChart);
-    windChart(data.windChart);
   });
 
 const fossilChart = (data) => {
@@ -216,7 +217,123 @@ const fossilChart = (data) => {
     .text("Accord de Paris");
 };
 
-const hydraulicChart = (data) => {};
+const hydraulicChart = (data) => {
+  const margin = { top: 40, right: 40, bottom: 40, left: 80 },
+    width = 1024 - margin.left - margin.right,
+    height = 512 - margin.top - margin.bottom;
+
+  const svg = d3
+    .select("#hydraulic-chart")
+    .append("svg")
+    .attr(
+      "viewBox",
+      `0 0 ${width + margin.left + margin.right} ${
+        height + margin.top + margin.bottom
+      }`
+    )
+    .append("g")
+    .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+  // Title
+  svg
+    .append("text")
+    .attr("x", width / 2)
+    .attr("y", -margin.top / 2)
+    .attr("text-anchor", "middle")
+    .style("font-size", 16)
+    .text("Production d'énergie hydraulique");
+
+  const x = d3
+    .scaleTime()
+    .domain(d3.extent(data, (d) => d.year))
+    .range([0, width]);
+
+  const y = d3
+    .scaleLinear()
+    .domain([0, d3.max(data, (d) => d.hydraulic_electricity_production)])
+    .range([height, 0]);
+
+  const area = d3
+    .area()
+    .x((d) => x(d.year))
+    .y0(height)
+    .y1((d) => y(d.hydraulic_electricity_production));
+
+  const line = d3
+    .line()
+    .x((d) => x(d.year))
+    .y((d) => y(d.hydraulic_electricity_production));
+
+  const path = svg
+    .append("path")
+    .datum(data)
+    .attr("fill", "none")
+    .attr("stroke", hydraulicColor)
+    .attr("stroke-linejoin", "round")
+    .attr("stroke-linecap", "round")
+    .attr("stroke-width", 1.5)
+    .attr("d", line);
+
+  svg
+    .append("path")
+    .datum(data)
+    .attr("fill", hydraulicColor)
+    .attr("fill-opacity", 0.3)
+    .attr("stroke", "none")
+    .attr("d", area);
+
+  const pathLength = path.node().getTotalLength();
+
+  path
+    .attr("stroke-dashoffset", pathLength)
+    .attr("stroke-dasharray", pathLength);
+
+  svg
+    .append("g")
+    .attr("class", "axis-lines")
+    .attr("transform", `translate(0, ${height})`)
+    .call(d3.axisBottom(x));
+
+  svg.append("g").attr("class", "axis-lines").call(d3.axisLeft(y));
+
+  const xGrid = d3.axisBottom(x).tickSize(-height, 0, 0).tickFormat("");
+
+  const yGrid = d3.axisLeft(y).tickSize(-width, 0, 0).tickFormat("");
+
+  svg
+    .append("g")
+    .attr("class", "grid-lines")
+    .attr("transform", `translate(0, ${height})`)
+    .call(xGrid);
+
+  svg.append("g").attr("class", "grid-lines").call(yGrid);
+
+  // Label x-axis
+  svg
+    .append("text")
+    .attr("x", width / 2)
+    .attr("y", height + margin.bottom)
+    .attr("text-anchor", "middle")
+    .text("Année");
+
+  // Label y-axis
+  svg
+    .append("text")
+    .attr("x", -height / 2)
+    .attr("y", -margin.left / 2)
+    .attr("text-anchor", "middle")
+    .attr("transform", "rotate(-90)")
+    .text("Production d'électricité hydraulique (TWh)");
+
+  // Label source
+  svg
+    .append("text")
+    .attr("x", width)
+    .attr("y", height + margin.bottom)
+    .attr("text-anchor", "end")
+    .style("font-size", 10)
+    .text("Source: Our World in Data");
+};
 
 const nuclearChart = (data) => {
   const margin = { top: 40, right: 40, bottom: 40, left: 80 },
@@ -251,13 +368,13 @@ const nuclearChart = (data) => {
 
   const y = d3
     .scaleLinear()
-    .domain([0, d3.max(data, (d) => d.nuclear_electricity)])
+    .domain([0, d3.max(data, (d) => d.nuclear_electricity_production)])
     .range([height, 0]);
 
   const line = d3
     .line()
     .x((d) => x(d.year))
-    .y((d) => y(d.nuclear_electricity));
+    .y((d) => y(d.nuclear_electricity_production));
 
   const path = svg
     .append("path")
@@ -329,7 +446,7 @@ const nuclearChart = (data) => {
     .attr(
       "transform",
       `translate(${x(d3.timeParse("%Y")(1967))}, ${y(
-        data[1967 - 1960].nuclear_electricity
+        data[1967 - 1960].nuclear_electricity_production
       )})`
     );
 
@@ -358,7 +475,7 @@ const nuclearChart = (data) => {
     .attr(
       "transform",
       `translate(${x(d3.timeParse("%Y")(1969))}, ${y(
-        data[1969 - 1960].nuclear_electricity
+        data[1969 - 1960].nuclear_electricity_production
       )})`
     );
 
@@ -387,7 +504,7 @@ const nuclearChart = (data) => {
     .attr(
       "transform",
       `translate(${x(d3.timeParse("%Y")(1971))}, ${y(
-        data[1971 - 1960].nuclear_electricity
+        data[1971 - 1960].nuclear_electricity_production
       )})`
     );
 
@@ -416,7 +533,7 @@ const nuclearChart = (data) => {
     .attr(
       "transform",
       `translate(${x(d3.timeParse("%Y")(1972))}, ${y(
-        data[1972 - 1960].nuclear_electricity
+        data[1972 - 1960].nuclear_electricity_production
       )})`
     );
 
@@ -445,7 +562,7 @@ const nuclearChart = (data) => {
     .attr(
       "transform",
       `translate(${x(d3.timeParse("%Y")(1979))}, ${y(
-        data[1979 - 1960].nuclear_electricity
+        data[1979 - 1960].nuclear_electricity_production
       )})`
     );
 
@@ -474,7 +591,7 @@ const nuclearChart = (data) => {
     .attr(
       "transform",
       `translate(${x(d3.timeParse("%Y")(1984))}, ${y(
-        data[1984 - 1960].nuclear_electricity
+        data[1984 - 1960].nuclear_electricity_production
       )})`
     );
 
@@ -503,7 +620,7 @@ const nuclearChart = (data) => {
     .attr(
       "transform",
       `translate(${x(d3.timeParse("%Y")(2011))}, ${y(
-        data[2011 - 1960].nuclear_electricity
+        data[2011 - 1960].nuclear_electricity_production
       )})`
     );
 
@@ -522,10 +639,6 @@ const nuclearChart = (data) => {
     .style("font-size", 10)
     .text("Accident de Fukushima en 2011");
 };
-
-const solarChart = (data) => {};
-
-const windChart = (data) => {};
 
 // Create a new Intersection Observer instance
 const observerCharts = new IntersectionObserver(
