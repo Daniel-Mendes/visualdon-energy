@@ -11,17 +11,11 @@
   .grid-lines line {
     stroke: rgb(var(--color-fossil));
   }
-}
 
-#gas-chart {
-  .grid-lines line {
-    stroke: rgb(var(--color-gas));
-  }
-}
-
-#coal-chart {
-  .grid-lines line {
-    stroke: rgb(var(--color-coal));
+  g.point-of-interest {
+    circle {
+      cursor: var(--cursor-hand-up);
+    }
   }
 }
 
@@ -29,22 +23,16 @@
   .grid-lines line {
     stroke: rgb(var(--color-nuclear));
   }
+
+  g.point-of-interest {
+    circle {
+      cursor: var(--cursor-hand-up);
+    }
+  }
 }
 
-#hydro-chart {
+#hydraulic-chart {
   .grid-lines line {
     stroke: rgb(var(--color-hydraulic));
-  }
-}
-
-#solar-chart {
-  .grid-lines line {
-    stroke: rgb(var(--color-solar));
-  }
-}
-
-#wind-chart {
-  .grid-lines line {
-    stroke: rgb(var(--color-wind));
   }
 }
