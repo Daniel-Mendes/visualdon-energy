@@ -47,7 +47,7 @@ d3.json("assets/data/owid-energy-switzerland-data.json")
   });
 
 const fossilChart = (data) => {
-  const margin = { top: 40, right: 40, bottom: 40, left: 80 },
+  const margin = { top: 40, right: 60, bottom: 40, left: 80 },
     width = 1024 - margin.left - margin.right,
     height = 512 - margin.top - margin.bottom;
 
@@ -79,7 +79,7 @@ const fossilChart = (data) => {
 
   const y = d3
     .scaleLinear()
-    .domain([0, d3.max(data, (d) => d.fossil_fuel_consumption)])
+    .domain([0, d3.max(data, (d) => d.fossil_fuel_consumption) * 1.05])
     .range([height, 0]);
 
   const line = d3
@@ -377,7 +377,7 @@ const nuclearChart = (data) => {
 
   const y = d3
     .scaleLinear()
-    .domain([0, d3.max(data, (d) => d.nuclear_electricity_production)])
+    .domain([0, d3.max(data, (d) => d.nuclear_electricity_production) * 1.05])
     .range([height, 0]);
 
   const line = d3
