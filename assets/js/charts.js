@@ -188,7 +188,7 @@ const fossilChart = (data) => {
 const hydraulicChart = (data) => {
   // Stacked area chart
 
-  const margin = { top: 40, right: 40, bottom: 40, left: 80 },
+  const margin = { top: 40, right: 120, bottom: 40, left: 80 },
     width = 1024 - margin.left - margin.right,
     height = 512 - margin.top - margin.bottom;
 
@@ -240,47 +240,34 @@ const hydraulicChart = (data) => {
     .domain([0, d3.max(stackedData[stackedData.length - 1], (d) => d[1])])
     .range([height, 0]);
 
-  const clip = svg
-    .append("defs")
-    .append("svg:clipPath")
-    .attr("id", "clip")
-    .append("svg:rect")
-    .attr("width", width)
-    .attr("height", height)
-    .attr("x", 0)
-    .attr("y", 0);
-
-  const areaChart = svg.append("g").attr("clip-path", "url(#clip)");
-
   const area = d3
     .area()
     .x((d) => x(d.data.year))
     .y0((d) => y(d[0]))
     .y1((d) => y(d[1]));
 
+  svg
+    .selectAll(".area")
+    .data(stackedData)
+    .enter()
+    .append("path")
+    .attr("class", (d) => `area ${d.key}`)
+    .attr("d", area)
+    .style("fill", (d) => keysToColors[d.key])
+    .style("opacity", 1);
+
   // Highlight hover effect
   const highlight = (d) => {
     // Reduce opacity of all the areas
     d3.selectAll(".area").style("opacity", 0.1);
     // expect the one that is hovered
-    d3.select(`.${d.currentTarget.classList[1]}`).style("opacity", 1);
+    d3.select(`.${d.currentTarget.classList[0]}`).style("opacity", 1);
   };
 
   // And when it is not hovered anymore
   const noHighlight = (event) => {
     d3.selectAll(".area").style("opacity", 1);
   };
-
-  areaChart
-    .selectAll(".layer")
-    .data(stackedData)
-    .enter()
-    .append("path")
-    .attr("class", (d) => `area ${keysToLabels[d.key]}`)
-    .style("fill", (d) => {
-      return keysToColors[d.key];
-    })
-    .attr("d", area);
 
   svg
     .append("g")
@@ -297,12 +284,12 @@ const hydraulicChart = (data) => {
     .data(keys)
     .enter()
     .append("rect")
-    .attr("x", width - 100)
+    .attr("x", width + 20)
     .attr("y", (d, i) => 10 + i * (size + 5))
     .attr("width", 10)
     .attr("height", 10)
     .attr("fill", (d) => keysToColors[d])
-    .attr("class", (d) => `area ${keysToLabels[d]}`)
+    .attr("class", (d) => d)
     .on("mouseover", highlight)
     .on("mouseleave", noHighlight);
 
@@ -311,14 +298,13 @@ const hydraulicChart = (data) => {
     .data(keys)
     .enter()
     .append("text")
-    .attr("x", width - 100 + size * 1.2)
-    .attr("y", (d, i) => 10 + i * (size + 5) + size / 2)
+    .attr("x", width + 20 + size * 1.2)
+    .attr("y", (d, i) => 10 + i * (size + 5) + 6)
     .attr("text-anchor", "left")
     .attr("alignment-baseline", "middle")
     .style("font-size", 10)
-    .attr("class", (d) => `area ${keysToLabels[d]}`)
+    .attr("class", (d) => d)
     .text((d) => keysToLabels[d])
-
     .on("mouseover", highlight)
     .on("mouseleave", noHighlight);
 
@@ -580,10 +566,11 @@ const addPointOfInterests = (svg, pointsOfInterest, color) => {
 
     pointOfInterestGroup
       .append("text")
-      .attr("y", -20)
+      .attr("y", -15)
       .attr("text-anchor", "middle")
-      .style("font-size", 14)
+      //.attr("fill", color)
       .text(`${pointOfInterest.year}: ${pointOfInterest.label}`)
+      .style("font-size", 14)
       .style("opacity", 0);
   }
 };
