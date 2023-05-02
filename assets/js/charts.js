@@ -298,7 +298,7 @@ const hydraulicChart = (data) => {
     .data(keys)
     .enter()
     .append("text")
-    .attr("x", width + 20 + size * 1.2)
+    .attr("x", width + size + 15)
     .attr("y", (d, i) => 10 + i * (size + 5) + 6)
     .attr("text-anchor", "left")
     .attr("alignment-baseline", "middle")
