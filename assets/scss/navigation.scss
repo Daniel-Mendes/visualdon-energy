@@ -34,6 +34,7 @@
       color: #fff;
       text-decoration: none;
       border-radius: 15px;
+      cursor: var(--cursor-hand-up-white);
 
       transition: all 0.3s ease-in-out;
 
@@ -146,7 +147,7 @@
     border-radius: 100%;
     outline: transparent;
     border: transparent;
-    cursor: pointer;
+    cursor: var(--cursor-hand-up-white);
 
     opacity: 0;
     transform: translateX(200px);

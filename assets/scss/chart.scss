@@ -35,4 +35,9 @@
   .grid-lines line {
     stroke: rgb(var(--color-hydraulic));
   }
+
+  rect,
+  text {
+    cursor: var(--cursor-hand-up);
+  }
 }

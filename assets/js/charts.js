@@ -182,7 +182,7 @@ const fossilChart = (data) => {
     },
   ];
 
-  addPointOfInterests(svg, fossilPointsOfInterest, fossilColor);
+  addPointsOfInterest(svg, fossilPointsOfInterest, fossilColor);
 };
 
 const hydraulicChart = (data) => {
@@ -447,7 +447,7 @@ const nuclearChart = (data) => {
     .style("font-size", 10)
     .text("Source: Our World in Data");
 
-  const nucelarPointsOfInterest = [
+  const nuclearPointsOfInterest = [
     {
       year: 1967,
       label: "Centrale nucléaire expérimentale de Lucens",
@@ -498,7 +498,7 @@ const nuclearChart = (data) => {
     },
   ];
 
-  addPointOfInterests(svg, nucelarPointsOfInterest, nuclearColor);
+  addPointsOfInterest(svg, nuclearPointsOfInterest, nuclearColor);
 };
 
 // Create a new Intersection Observer instance
@@ -546,7 +546,7 @@ document.querySelectorAll(".chart").forEach((element) => {
   observerCharts.observe(element);
 });
 
-const addPointOfInterests = (svg, pointsOfInterest, color) => {
+const addPointsOfInterest = (svg, pointsOfInterest, color) => {
   for (const pointOfInterest of pointsOfInterest) {
     const pointOfInterestGroup = svg
       .append("g")
@@ -568,7 +568,6 @@ const addPointOfInterests = (svg, pointsOfInterest, color) => {
       .append("text")
       .attr("y", -15)
       .attr("text-anchor", "middle")
-      //.attr("fill", color)
       .text(`${pointOfInterest.year}: ${pointOfInterest.label}`)
       .style("font-size", 14)
       .style("opacity", 0);
