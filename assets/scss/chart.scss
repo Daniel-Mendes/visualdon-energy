@@ -7,6 +7,25 @@
   }
 }
 
+.tooltip {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  position: absolute;
+  pointer-events: none;
+}
+
+#fossil.active ~ .tooltip {
+  border-color: rgb(var(--color-fossil));
+  color: rgb(var(--color-fossil));
+}
+
+#nuclear.active ~ .tooltip {
+  border-color: rgb(var(--color-nuclear));
+  color: rgb(var(--color-nuclear));
+}
+
 #fossil-chart {
   .grid-lines line {
     stroke: rgb(var(--color-fossil));

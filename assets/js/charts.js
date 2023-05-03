@@ -44,6 +44,8 @@ d3.json("assets/data/owid-energy-switzerland-data.json")
     fossilChart(data.fossilChart);
     hydraulicChart(data.hydraulicChart);
     nuclearChart(data.nuclearChart);
+
+    addTooltip();
   });
 
 const fossilChart = (data) => {
@@ -546,6 +548,13 @@ document.querySelectorAll(".chart").forEach((element) => {
   observerCharts.observe(element);
 });
 
+const addTooltip = () => {
+  d3.select("#wrapper")
+    .append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+};
+
 const addPointsOfInterest = (svg, pointsOfInterest, color) => {
   for (const pointOfInterest of pointsOfInterest) {
     const pointOfInterestGroup = svg
@@ -560,42 +569,41 @@ const addPointsOfInterest = (svg, pointsOfInterest, color) => {
       .append("circle")
       .attr("r", 5)
       .attr("fill", color)
-      .on("mouseover", showPointOfInterest)
+      .on("mouseover", (event) =>
+        showPointOfInterest(event, pointOfInterest.label)
+      )
       .on("mouseout", hidePointOfInterest)
-      .style("opacity", 0);
-
-    pointOfInterestGroup
-      .append("text")
-      .attr("y", -15)
-      .attr("text-anchor", "middle")
-      .text(`${pointOfInterest.year}: ${pointOfInterest.label}`)
-      .style("font-size", 14)
       .style("opacity", 0);
   }
 };
 
-const showPointOfInterest = (event) => {
+const showPointOfInterest = (event, label) => {
   const circle = event.target;
-  const label = event.target.nextElementSibling;
+  const tooltip = d3.select(".tooltip");
 
   if (circle) {
     circle.attributes.r.value = 7;
   }
 
-  if (label) {
-    label.style.opacity = 1;
+  if (label && tooltip) {
+    tooltip
+      .text(label)
+      // Align the tooltip in the middle base on its length
+      .style("left", `${event.pageX - tooltip.node().offsetWidth / 2}px`)
+      .style("top", `${event.pageY - 55}px`)
+      .style("opacity", 1);
   }
 };
 
 const hidePointOfInterest = (event) => {
   const circle = event.target;
-  const label = event.target.nextElementSibling;
+  const tooltip = d3.select(".tooltip");
 
   if (circle) {
     circle.attributes.r.value = 5;
   }
 
-  if (label) {
-    label.style.opacity = 0;
+  if (tooltip) {
+    tooltip.style("opacity", 0);
   }
 };
