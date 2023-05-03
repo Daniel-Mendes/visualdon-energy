@@ -31,7 +31,7 @@ const windTurbineRightTimeline = gsap
   )
   .delay(1.5);
 
-const windTurbineLeft = document.querySelector(".wind-turbine #turbine-1");
+const windTurbineLeft = document.querySelector(".wind-turbine:has(#turbine-1)");
 onClassChange(windTurbineLeft, (element) => {
   if (element.classList.contains("speed-up")) {
     windTurbineLeftTimeline.timeScale(5);
@@ -40,7 +40,9 @@ onClassChange(windTurbineLeft, (element) => {
   }
 });
 
-const windTurbineRight = document.querySelector(".wind-turbine #turbine-2");
+const windTurbineRight = document.querySelector(
+  ".wind-turbine:has(#turbine-2)"
+);
 onClassChange(windTurbineRight, (element) => {
   if (element.classList.contains("speed-up")) {
     windTurbineRightTimeline.timeScale(5);
