@@ -18,7 +18,9 @@ ATTENTION :
 - Quand une donnée n'est pas disponible, elle est remplacée par la valeur 0.
 - Les données sont en TWh (Tera Watt Heure) et en tonnes de CO2.
 
-### Extrait de données
+### Préparation des données
+
+Sur le fichier `.json` contenant les informations sur tous les pays du monde, je n'ai gardé que les informations sur la Suisse. Cela me permet d'avoir un fichier beaucoup moins lourd à charger dans le navigateur. 
 
 ```json
  "Switzerland": {
@@ -128,6 +130,65 @@ ATTENTION :
                 "wind_share_energy": 0.0
             }
         ]
+```
+
+Pour la carte des centrales nucléaires suisse, j'ai créé un fichier au format `.geojson` contenant les coordonnées des 5 centrales; récupéré sur Wikipédia.
+
+```json
+
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "Power station": "Leibstadt",
+        "MW": 1220,
+        "# Units": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.18472, 47.60306]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Power station": "Beznau I et II",
+        "MW": 365,
+        "# Units": 2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.5, 47.3]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Power station": "Gösgen",
+        "MW": 1035,
+        "# Units": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [7.9680556, 47.3663889]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Power station": "Mühleberg",
+        "MW": 335,
+        "# Units": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [7.268, 46.9653]
+      }
+    }
+  ]
+}
 ```
 
 ## But
