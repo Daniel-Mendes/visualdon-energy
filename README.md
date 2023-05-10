@@ -193,7 +193,7 @@ Pour la carte des centrales nucléaires suisse, j'ai créé un fichier au format
 
 ## But
 
-Face à la crise energétique, que connait l'Europe, il est dificle de comprendre notre situation, afin de mieux comprendre toutes cette histoire, il faut analyser notre liens avec l'énergie.
+Face à la crise énergétique, que connaît l'Europe, il est difficile de comprendre notre situation, afin de mieux comprendre toute cette histoire, il faut analyser notre lien avec l'énergie.
 
 Le but de ce projet est d'expliquer l'évolution de la consommation d'énergie, de l'énergie produits, et l'évolution des sources d'énergies.
 
