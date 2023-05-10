@@ -200,8 +200,7 @@ Le but de ce projet est d'expliquer l'évolution de la consommation d'énergie, 
 ## Références
 
 - Office fédéral de l'énergie - Dashboard de l'énergie Suisse (https://energiedashboard.admin.ch/dashboard)
-- Anna Jones - The health impacts of climate change: why climate action is essential to protect health (https://doi.org/10.1016/j.mporth.2022.07.001) 
-
+- Les explorateurs de l'énergie (https://www.explorateurs-energie.ch/)
 
 ## Wireframe
 
