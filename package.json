@@ -19,7 +19,7 @@
   "homepage": "https://github.com/Daniel-Mendes/visualdon-energy#readme",
   "dependencies": {
     "@turf/turf": "^6.5.0",
-    "d3": "^7.8.4",
+    "d3": "^7.8.5",
     "gsap": "^3.11.5"
   },
   "devDependencies": {
