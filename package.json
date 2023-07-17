@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "netlify-cli": "^15.8.1",
-    "sass": "^1.60.0",
+    "sass": "^1.63.6",
     "vite": "^4.4.2",
     "vite-plugin-static-copy": "^0.16.0"
   }
